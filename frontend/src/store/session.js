@@ -11,18 +11,20 @@ function removeSessionUser() {
 	return { type: REMOVE_USER };
 }
 
-export function setSessionUserThunk(credential, password) {
+export function setSessionUserThunk({ credential, password }) {
 	return async function (dispatch) {
-		console.log(credential, password);
-		const res = await csrfFetch("/api/session", {
-			method: "POST",
-			body: JSON.stringify({ credential, password }),
-		});
+		try {
+			const res = await csrfFetch("/api/session", {
+				method: "POST",
+				body: JSON.stringify({ credential, password }),
+			});
 
-		if (res.ok) {
-			const user = await res.json();
-			console.log(user);
-			dispatch(setSessionUser(user));
+			if (res.ok) {
+				const user = await res.json();
+				dispatch(setSessionUser(user));
+			}
+		} catch (err) {
+			return err.json();
 		}
 	};
 }
