@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 import { setSessionUserThunk } from "../../store/session";
-import "./LoginForm.css";
+import styles from "./LoginForm.module.css";
 
 export default function LoginFormPage() {
 	const [credential, setCredential] = useState("");
@@ -26,19 +26,20 @@ export default function LoginFormPage() {
 	if (user) return <Redirect to="/" />;
 
 	return (
-		<div className="login-form-div">
+		<div className={styles["login-form-div"]}>
 			<div>
-				<ul className="login-form-errors">
+				<ul className={styles["login-form-errors"]}>
 					{backendErrors.map((error) => (
 						<li key={error}>{error}</li>
 					))}
 				</ul>
 			</div>
-			<form className="login-form" onSubmit={handleSubmit}>
+			<form className={styles["login-form"]} onSubmit={handleSubmit}>
 				<div>
 					<label>
-						Login Credential (username or email)
+						Login Credential (username or email):
 						<input
+							className={styles["login-input"]}
 							type="text"
 							value={credential}
 							onChange={(e) => setCredential(e.target.value)}
@@ -47,15 +48,16 @@ export default function LoginFormPage() {
 				</div>
 				<div>
 					<label>
-						Password
+						Password:
 						<input
+							className={styles["login-input"]}
 							type="password"
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
 						/>
 					</label>
 				</div>
-				<button>Login</button>
+				<button className={styles["login-button"]}>Login</button>
 			</form>
 		</div>
 	);

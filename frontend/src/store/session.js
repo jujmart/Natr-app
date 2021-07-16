@@ -46,6 +46,24 @@ export function removeSessionUserThunk() {
 	};
 }
 
+export function createSessionUserThunk({ username, email, password }) {
+	return async function (dispatch) {
+		try {
+			const res = await csrfFetch("/api/users", {
+				method: "POST",
+				body: JSON.stringify({ username, email, password }),
+			});
+
+			if (res.ok) {
+				const user = await res.json();
+				dispatch(setSessionUser(user));
+			}
+		} catch (err) {
+			return err.json();
+		}
+	};
+}
+
 export function restoreSessionUserThunk() {
 	return async function (dispatch) {
 		const res = await csrfFetch("/api/session");

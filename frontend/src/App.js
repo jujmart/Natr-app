@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Route, Switch } from "react-router-dom";
 
 import LoginFormPage from "./components/LoginFormPage";
+import SignupFormPage from "./components/SignupFormPage";
 import { restoreSessionUserThunk } from "./store/session";
 
 function App() {
@@ -19,6 +20,9 @@ function App() {
 			<Switch>
 				<Route path="/login">
 					{user ? <Redirect to="/" /> : <LoginFormPage />}
+				</Route>
+				<Route path="/signup">
+					{user ? <Redirect to="/" /> : <SignupFormPage />}
 				</Route>
 			</Switch>
 		</>
