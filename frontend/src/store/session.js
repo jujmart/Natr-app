@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
+const RESTORE_USER = "session/RESOTRE_USER";
 
 function setSessionUser(user) {
 	return { type: SET_USER, user };
@@ -9,6 +10,10 @@ function setSessionUser(user) {
 
 function removeSessionUser() {
 	return { type: REMOVE_USER };
+}
+
+function restoreSessionUser(user) {
+	return { type: RESTORE_USER, user };
 }
 
 export function setSessionUserThunk({ credential, password }) {
@@ -41,6 +46,16 @@ export function removeSessionUserThunk() {
 	};
 }
 
+export function restoreSessionUserThunk() {
+	return async function (dispatch) {
+		const res = await csrfFetch("/api/session");
+		const { user } = await res.json();
+		if (user) {
+			dispatch(restoreSessionUser({ user }));
+		}
+	};
+}
+
 export default function sessionReducer(state = { user: null }, action) {
 	Object.freeze(state);
 
@@ -49,6 +64,8 @@ export default function sessionReducer(state = { user: null }, action) {
 			return action.user;
 		case REMOVE_USER:
 			return { user: null };
+		case RESTORE_USER:
+			return action.user;
 		default:
 			return state;
 	}
