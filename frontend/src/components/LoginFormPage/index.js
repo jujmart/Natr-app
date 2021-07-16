@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { setSessionUserThunk } from "../../store/session";
+import "./LoginForm.css";
 
 export default function LoginFormPage() {
 	const [credential, setCredential] = useState("");
@@ -21,13 +22,15 @@ export default function LoginFormPage() {
 	}
 
 	return (
-		<div>
-			<ul className="errors">
-				{backendErrors.map((error) => (
-					<li key={error}>{error}</li>
-				))}
-			</ul>
-			<form onSubmit={handleSubmit}>
+		<div className="login-form-div">
+			<div>
+				<ul className="login-form-errors">
+					{backendErrors.map((error) => (
+						<li key={error}>{error}</li>
+					))}
+				</ul>
+			</div>
+			<form className="login-form" onSubmit={handleSubmit}>
 				<div>
 					<label>
 						Login Credential (username or email)
