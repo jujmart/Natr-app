@@ -1,38 +1,34 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Route, Switch } from "react-router-dom";
 
 import LoginFormPage from "./components/LoginFormPage";
+import Navigation from "./components/Navigation";
 import SignupFormPage from "./components/SignupFormPage";
-import {
-	removeSessionUserThunk,
-	restoreSessionUserThunk,
-} from "./store/session";
+import { restoreSessionUserThunk } from "./store/session";
 
 function App() {
 	const user = useSelector((state) => state.session.user);
+	const [isLoaded, setIsLoaded] = useState(false);
 	const dispatch = useDispatch();
 
-	function handleClick() {
-		dispatch(removeSessionUserThunk());
-	}
-
 	useEffect(() => {
-		dispatch(restoreSessionUserThunk());
+		dispatch(restoreSessionUserThunk()).then(() => setIsLoaded(true));
 	}, [dispatch]);
 
 	return (
 		<>
-			<h1>Hello from App</h1>
-			{user ? <button onClick={handleClick}>Log Out</button> : null}
-			<Switch>
-				<Route path="/login">
-					{user ? <Redirect to="/" /> : <LoginFormPage />}
-				</Route>
-				<Route path="/signup">
-					{user ? <Redirect to="/" /> : <SignupFormPage />}
-				</Route>
-			</Switch>
+			<Navigation isLoaded={isLoaded} />
+			{isLoaded && (
+				<Switch>
+					<Route path="/login">
+						{user ? <Redirect to="/" /> : <LoginFormPage />}
+					</Route>
+					<Route path="/signup">
+						{user ? <Redirect to="/" /> : <SignupFormPage />}
+					</Route>
+				</Switch>
+			)}
 		</>
 	);
 }

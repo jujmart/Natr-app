@@ -1,0 +1,8 @@
+.nav-bar-div {
+	display: flex;
+}
+
+.nav-bar {
+	padding: 5px;
+	margin: 0px 5px 5px 5px;
+}

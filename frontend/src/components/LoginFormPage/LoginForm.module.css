@@ -13,7 +13,7 @@
 	flex-direction: column;
 }
 
-input {
+.login-input {
 	margin: 5px;
 }
 
