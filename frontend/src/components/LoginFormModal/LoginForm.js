@@ -1,17 +1,15 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import { setSessionUserThunk } from "../../store/session";
 import styles from "./LoginForm.module.css";
 
-export default function LoginFormPage() {
+export default function LoginForm() {
 	const [credential, setCredential] = useState("");
 	const [password, setPassword] = useState("");
 	const [backendErrors, setBackendErrors] = useState([]);
 
 	const dispatch = useDispatch();
-	const user = useSelector((state) => state.session.user);
 
 	async function handleSubmit(e) {
 		e.preventDefault();
@@ -22,8 +20,6 @@ export default function LoginFormPage() {
 			setPassword("");
 		}
 	}
-
-	if (user) return <Redirect to="/" />;
 
 	return (
 		<div className={styles["login-form-div"]}>
