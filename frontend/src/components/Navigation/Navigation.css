@@ -1,8 +1,36 @@
 .nav-bar-div {
 	display: flex;
+	background-color: black;
+	border-radius: 3px;
 }
 
 .nav-bar {
 	padding: 5px;
 	margin: 0px 5px 5px 5px;
+	text-decoration: none;
+	color: white;
+}
+
+.nav-bar-login {
+	padding: 5px;
+	display: flex;
+	justify-self: end;
+}
+
+.nav-bar-signup {
+	padding: 5px;
+	display: flex;
+	justify-self: end;
+}
+
+.nav-bar-signup-button {
+	padding: 10px;
+	align-self: center;
+	font-size: 14px;
+}
+
+.nav-bar-login-button {
+	padding: 10px;
+	align-self: center;
+	font-size: 14px;
 }
