@@ -22,6 +22,11 @@ module.exports = {
 				type: Sequelize.STRING.BINARY,
 				allowNull: false,
 			},
+			profilePhotoUrl: {
+				type: Sequelize.STRING(500),
+				defaultValue:
+					"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwinaero.com%2Fremove-user-account-picture-from-sign-in-screen-in-windows-10%2F&psig=AOvVaw1_GNkRWA_OV0hl0BgrZogM&ust=1626810391875000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCOCttY7z7_ECFQAAAAAdAAAAABAN",
+			},
 			createdAt: {
 				allowNull: false,
 				type: Sequelize.DATE,

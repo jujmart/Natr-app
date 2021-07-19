@@ -7,10 +7,8 @@ const ModalContext = React.createContext();
 export function ModalProvider({ children }) {
 	const modalRef = useRef();
 	const [value, setValue] = useState();
-
 	useEffect(() => {
 		setValue(modalRef.current);
-		console.log(modalRef);
 	}, []);
 
 	return (
@@ -24,9 +22,11 @@ export function ModalProvider({ children }) {
 }
 
 export function Modal({ onClose, children }) {
-	const modalNode = useContext(ModalContext);
+	let modalNode = useContext(ModalContext);
+
 	if (!modalNode) return null;
 
+	modalNode.innerHTML = "";
 	return ReactDOM.createPortal(
 		<div id="modal">
 			<div id="modal-background" onClick={onClose} />

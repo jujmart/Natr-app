@@ -32,6 +32,12 @@ module.exports = (sequelize, DataTypes) => {
 					len: [60, 60],
 				},
 			},
+			profilePhotoUrl: {
+				type: DataTypes.STRING,
+				validate: {
+					len: [0, 500],
+				},
+			},
 		},
 		{
 			defaultScope: {
@@ -41,6 +47,7 @@ module.exports = (sequelize, DataTypes) => {
 						"email",
 						"createdAt",
 						"updatedAt",
+						"profilePhotoUrl",
 					],
 				},
 			},
@@ -56,6 +63,7 @@ module.exports = (sequelize, DataTypes) => {
 	);
 	User.associate = function (models) {
 		// associations can be defined here
+		User.hasMany(models.Image, { foreignKey: "userId" });
 	};
 	User.prototype.toSafeObject =
 		function () /* remember, this cannot be an arrow function*/ {
