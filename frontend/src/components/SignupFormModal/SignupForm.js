@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import { createSessionUserThunk } from "../../store/session";
+import LoginFormModal from "../LoginFormModal";
 import styles from "./SignupForm.module.css";
 
 export default function SignupFormPage() {
@@ -14,7 +14,6 @@ export default function SignupFormPage() {
 	const [validationErrors, setValidationErrors] = useState([]);
 
 	const dispatch = useDispatch();
-	const user = useSelector((state) => state.session.user);
 
 	async function handleSubmit(e) {
 		e.preventDefault();
@@ -51,8 +50,6 @@ export default function SignupFormPage() {
 		}
 		setValidationErrors(errors);
 	}, [username, email, password, confirmPassword]);
-
-	if (user) return <Redirect to="/" />;
 
 	return (
 		<div className={styles["signup-form-div"]}>
@@ -132,6 +129,12 @@ export default function SignupFormPage() {
 						<li key={error}>{error}</li>
 					))}
 				</ul>
+			</div>
+			<div>
+				Already a Natr member? <LoginFormModal />
+			</div>
+			<div>
+				<ul></ul>
 			</div>
 		</div>
 	);

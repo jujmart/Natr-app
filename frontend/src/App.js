@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import Navigation from "./components/Navigation";
-import SignupFormPage from "./components/SignupFormPage";
 import { restoreSessionUserThunk } from "./store/session";
 
 function App() {
-	const user = useSelector((state) => state.session.user);
 	const [isLoaded, setIsLoaded] = useState(false);
 	const dispatch = useDispatch();
 
@@ -18,13 +15,6 @@ function App() {
 	return (
 		<>
 			<Navigation isLoaded={isLoaded} />
-			{isLoaded && (
-				<Switch>
-					<Route path="/signup">
-						{user ? <Redirect to="/" /> : <SignupFormPage />}
-					</Route>
-				</Switch>
-			)}
 		</>
 	);
 }

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { setSessionUserThunk } from "../../store/session";
+import SignupFormModal from "../SignupFormModal";
 import styles from "./LoginForm.module.css";
 
 export default function LoginForm() {
@@ -56,6 +57,15 @@ export default function LoginForm() {
 				</div>
 				<button className={styles["login-button"]}>Login</button>
 			</form>
+			<div>
+				<ul></ul>
+			</div>
+			<div>
+				Not a Natr member? <SignupFormModal />
+			</div>
+			<div>
+				<ul></ul>
+			</div>
 		</div>
 	);
 }
