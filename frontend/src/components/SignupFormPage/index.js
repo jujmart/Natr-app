@@ -56,6 +56,7 @@ export default function SignupFormPage() {
 
 	return (
 		<div className={styles["signup-form-div"]}>
+			<h3>Sign up for Natr</h3>
 			<form className={styles["signup-form"]} onSubmit={handleSubmit}>
 				<div>
 					<label>

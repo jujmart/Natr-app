@@ -23,6 +23,7 @@ export default function LoginForm() {
 
 	return (
 		<div className={styles["login-form-div"]}>
+			<h3>Log in to Natr</h3>
 			<div>
 				<ul className={styles["login-form-errors"]}>
 					{backendErrors.map((error) => (
