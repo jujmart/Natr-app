@@ -15,8 +15,12 @@ function Navigation({ isLoaded }) {
 	} else {
 		sessionLinks = (
 			<>
-				<LoginFormModal />
-				<SignupFormModal />
+				<div className="nav-bar-login">
+					<LoginFormModal />
+				</div>
+				<div className="nav-bar-signup">
+					<SignupFormModal />
+				</div>
 			</>
 		);
 	}
@@ -24,7 +28,7 @@ function Navigation({ isLoaded }) {
 	return (
 		<div className="nav-bar-div">
 			<NavLink exact to="/" className="nav-bar">
-				Home
+				<h3>Natr</h3>
 			</NavLink>
 			{isLoaded && sessionLinks}
 		</div>
