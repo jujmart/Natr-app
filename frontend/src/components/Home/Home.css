@@ -1,0 +1,10 @@
+.homepage-photo-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.homepage-photo-img {
+	height: auto;
+	max-width: 100%;
+}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
+import Home from "./components/Home";
 import Navigation from "./components/Navigation";
 import { restoreSessionUserThunk } from "./store/session";
 
@@ -15,6 +16,7 @@ function App() {
 	return (
 		<>
 			<Navigation isLoaded={isLoaded} />
+			<Home />
 		</>
 	);
 }
