@@ -25,7 +25,10 @@ function Navigation({ isLoaded }) {
 		sessionLinks = (
 			<div className="nav-bar-buttons">
 				<div className="nav-bar-login">
-					<button onClick={() => dispatch(setShowLogin())}>
+					<button
+						onClick={() => dispatch(setShowLogin())}
+						className="nav-bar-login-button"
+					>
 						Log In
 					</button>
 					{login ? (
@@ -35,7 +38,10 @@ function Navigation({ isLoaded }) {
 					) : null}
 				</div>
 				<div className="nav-bar-signup">
-					<button onClick={() => dispatch(setShowSignup())}>
+					<button
+						onClick={() => dispatch(setShowSignup())}
+						className="nav-bar-signup-button"
+					>
 						Sign Up
 					</button>
 					{signup ? (

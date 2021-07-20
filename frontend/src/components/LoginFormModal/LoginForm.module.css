@@ -24,3 +24,16 @@
 	background-color: green;
 	border-radius: 6px;
 }
+
+.login-form-signin-button {
+	background-color: white;
+	border-style: unset;
+	color: blue;
+	font-size: 14px;
+	padding: 0px;
+	margin-left: 2px;
+}
+
+.login-form-signin-button:hover {
+	text-decoration: underline;
+}

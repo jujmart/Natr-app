@@ -30,3 +30,16 @@
 	margin-top: 20px;
 	border-radius: 6px;
 }
+
+.signup-form-login-button {
+	background-color: white;
+	border-style: unset;
+	color: blue;
+	font-size: 14px;
+	padding: 0px;
+	margin-left: 2px;
+}
+
+.signup-form-login-button:hover {
+	text-decoration: underline;
+}

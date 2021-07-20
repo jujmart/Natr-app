@@ -64,8 +64,11 @@ export default function LoginForm({ setShowLoginModal }) {
 			</div>
 			<div>
 				Not a Natr member?{" "}
-				<button onClick={() => dispatch(setShowSignup())}>
-					Signup
+				<button
+					onClick={() => dispatch(setShowSignup())}
+					className={styles["login-form-signin-button"]}
+				>
+					Sign Up
 				</button>
 			</div>
 			<div>
