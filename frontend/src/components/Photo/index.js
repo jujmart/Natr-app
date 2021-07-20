@@ -38,8 +38,12 @@ export default function Photo() {
 				/>
 			</div>
 			<div className="individual-photo-user">
-				<div className="individual-photo-user-photo">
-					<img src={user?.profilePhotoUrl} alt="Profile Pic" />
+				<div className="individual-photo-user-photo-container">
+					<img
+						src={user?.profilePhotoUrl}
+						alt="Profile Pic"
+						className="individual-photo-user-photo"
+					/>
 				</div>
 				<div className="individual-photo-user-username">
 					{user?.username}
