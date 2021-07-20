@@ -18,7 +18,7 @@ export default function Home() {
 			<div className="homepage-photo-container">
 				{photos.map((photo) => (
 					<div key={photo.id} className="homepage-photo">
-						<Link to="/">
+						<Link to={`/photos/${photo.id}`}>
 							<img
 								src={photo.imageUrl}
 								alt={photo.title}
