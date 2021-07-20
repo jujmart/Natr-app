@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import { getPhotosThunk } from "../../store/photos";
+import "./Photo.css";
 
 export default function Photo() {
 	const photos = useSelector((state) => state.photos);
@@ -11,24 +12,27 @@ export default function Photo() {
 	const [currentPhoto, setCurrentPhoto] = useState({});
 
 	useEffect(() => {
-		if (!photos.length) {
-			dispatch(getPhotosThunk()).then(() => {
-				let photo = photos.find((photo) => photoId === photo.id);
-				console.log(photos);
-				setCurrentPhoto(photo);
-			});
-		}
+		dispatch(getPhotosThunk());
+	}, [dispatch]);
 
-		let photo = photos.find((photo) => photoId === photo.id);
-		console.log(photo);
+	useEffect(() => {
+		let photo = photos.find((photo) => +photoId === photo.id);
 		setCurrentPhoto(photo);
 	}, [dispatch, photos, photoId]);
 
 	return (
-		<>
-			<div>
-				<img src={currentPhoto?.imageUrl} alt={currentPhoto?.title} />
+		<div className="individual-photo-container">
+			<div className="individual-photo-img-container">
+				<img
+					src={currentPhoto?.imageUrl}
+					alt={currentPhoto?.title}
+					className="individual-photo-img"
+				/>
 			</div>
-		</>
+			<div className="individual-photo-title">{currentPhoto?.title}</div>
+			<div className="individual-photo-content">
+				{currentPhoto?.content}
+			</div>
+		</div>
 	);
 }
