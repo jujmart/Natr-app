@@ -1,13 +1,18 @@
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
+import { Modal } from "../../context/Modal";
+import LoginForm from "../LoginFormModal/LoginForm";
+import SignupForm from "../SignupFormModal/SignupForm";
 import ProfileButton from "./ProfileButton";
-import LoginFormModal from "../LoginFormModal";
-import SignupFormModal from "../SignupFormModal";
+import { setShowSignup, setShowLogin, setClose } from "../../store/modal";
 import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector((state) => state.session.user);
+	const signup = useSelector((state) => state.modal.signup);
+	const login = useSelector((state) => state.modal.login);
+	const dispatch = useDispatch();
 
 	let sessionLinks;
 	if (sessionUser) {
@@ -20,10 +25,24 @@ function Navigation({ isLoaded }) {
 		sessionLinks = (
 			<div className="nav-bar-buttons">
 				<div className="nav-bar-login">
-					<LoginFormModal />
+					<button onClick={() => dispatch(setShowLogin())}>
+						Log In
+					</button>
+					{login ? (
+						<Modal onClose={() => dispatch(setClose())}>
+							<LoginForm />
+						</Modal>
+					) : null}
 				</div>
 				<div className="nav-bar-signup">
-					<SignupFormModal />
+					<button onClick={() => dispatch(setShowSignup())}>
+						Sign Up
+					</button>
+					{signup ? (
+						<Modal onClose={() => dispatch(setClose())}>
+							<SignupForm />
+						</Modal>
+					) : null}
 				</div>
 			</div>
 		);
