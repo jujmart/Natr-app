@@ -1,8 +1,13 @@
 .nav-bar-div {
 	display: flex;
 	background-color: black;
-	border-radius: 3px;
 	margin-bottom: 10px;
+	position: sticky;
+	top: 0px;
+	border-top: 10px solid white;
+	border-bottom: 10px solid white;
+	justify-content: space-between;
+	/* border-radius: 3px; */
 }
 
 .nav-bar {
@@ -10,18 +15,22 @@
 	margin: 0px 5px 5px 5px;
 	text-decoration: none;
 	color: white;
+	display: flex;
+	align-items: center;
+}
+
+.nav-bar-buttons {
+	display: flex;
 }
 
 .nav-bar-login {
 	padding: 5px;
 	display: flex;
-	justify-self: end;
 }
 
 .nav-bar-signup {
 	padding: 5px;
 	display: flex;
-	justify-self: end;
 }
 
 .nav-bar-signup-button {
@@ -34,4 +43,9 @@
 	padding: 10px;
 	align-self: center;
 	font-size: 14px;
+}
+
+.profile-dropdown {
+	color: white;
+	padding-right: 15px;
 }
