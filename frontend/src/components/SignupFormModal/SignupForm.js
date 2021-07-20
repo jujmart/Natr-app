@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { setClose, setShowLogin } from "../../store/modal";
 
 import { createSessionUserThunk } from "../../store/session";
-import LoginFormModal from "../LoginFormModal";
 import styles from "./SignupForm.module.css";
 
 export default function SignupFormPage({ setShowSignupModal }) {
@@ -25,6 +25,8 @@ export default function SignupFormPage({ setShowSignupModal }) {
 			setBackendErrors(res.errors);
 			setPassword("");
 			setConfirmPassword("");
+		} else {
+			dispatch(setClose());
 		}
 	}
 
@@ -132,7 +134,7 @@ export default function SignupFormPage({ setShowSignupModal }) {
 			</div>
 			<div>
 				Already a Natr member?{" "}
-				<LoginFormModal onClose={() => setShowSignupModal(false)} />
+				<button onClick={() => dispatch(setShowLogin())}>Log In</button>
 			</div>
 			<div>
 				<ul></ul>
