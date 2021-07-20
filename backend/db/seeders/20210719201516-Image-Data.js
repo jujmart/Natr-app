@@ -14,7 +14,7 @@ module.exports = {
 				{
 					userId: 2,
 					imageUrl:
-						"https://i.pinimg.com/originals/a7/3d/6e/a73d6e4ac85c6a822841e449b24c78e1.jpg",
+						"https://natr-app.s3.us-east-2.amazonaws.com/AWS-Bucket/Homepage-Photos/seeder-photo1.jpeg",
 					title: "Red Leaves, Purple-Fog Lake",
 					content:
 						"Nice contrast in colors of leaves and fog on the lake",
@@ -22,7 +22,7 @@ module.exports = {
 				{
 					userId: 3,
 					imageUrl:
-						"https://images.pexels.com/photos/3225517/pexels-photo-3225517.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+						"https://natr-app.s3.us-east-2.amazonaws.com/AWS-Bucket/Homepage-Photos/seeder-photo2.jpeg",
 					title: "River flowing to Mountain",
 					content:
 						"Sun rising on mountains in background while the river flows in the foreground",
@@ -30,7 +30,7 @@ module.exports = {
 				{
 					userId: 2,
 					imageUrl:
-						"https://upload.wikimedia.org/wikipedia/commons/c/c8/Altja_j%C3%B5gi_Lahemaal.jpg",
+						"https://natr-app.s3.us-east-2.amazonaws.com/AWS-Bucket/Homepage-Photos/seeder-photo3.jpeg",
 					title: "River flowing in dense rainforest",
 					content:
 						"The river flows through the thick vegetation and logs that have fallen into its path",
