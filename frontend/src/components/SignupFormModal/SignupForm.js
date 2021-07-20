@@ -5,7 +5,7 @@ import { createSessionUserThunk } from "../../store/session";
 import LoginFormModal from "../LoginFormModal";
 import styles from "./SignupForm.module.css";
 
-export default function SignupFormPage() {
+export default function SignupFormPage({ setShowSignupModal }) {
 	const [username, setUsername] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -131,7 +131,8 @@ export default function SignupFormPage() {
 				</ul>
 			</div>
 			<div>
-				Already a Natr member? <LoginFormModal />
+				Already a Natr member?{" "}
+				<LoginFormModal onClose={() => setShowSignupModal(false)} />
 			</div>
 			<div>
 				<ul></ul>

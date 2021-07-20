@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { Route, Switch } from "react-router-dom";
 
 import Home from "./components/Home";
 import Navigation from "./components/Navigation";
+import Photo from "./components/Photo";
 import { restoreSessionUserThunk } from "./store/session";
 
 function App() {
@@ -16,7 +18,14 @@ function App() {
 	return (
 		<>
 			<Navigation isLoaded={isLoaded} />
-			<Home />
+			<Switch>
+				<Route exact path="/">
+					<Home />
+				</Route>
+				<Route path="/photos/:photoId">
+					<Photo />
+				</Route>
+			</Switch>
 		</>
 	);
 }
