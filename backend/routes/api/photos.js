@@ -2,7 +2,7 @@ const express = require("express");
 const asyncHandler = require("express-async-handler");
 const { check } = require("express-validator");
 
-const { Image, User } = require("../../db/models");
+const { Image } = require("../../db/models");
 const { handleValidationErrors } = require("../../utils/validation");
 
 const router = express.Router();
@@ -25,15 +25,6 @@ router.get(
 	})
 );
 
-router.get(
-	"/:userId",
-	asyncHandler(async (req, res) => {
-		const { userId } = req.params;
-		const user = await User.scope("postUser").findByPk(userId);
-		return res.json({ user });
-	})
-);
-
 router.post(
 	"/",
 	validateImage,
@@ -47,6 +38,11 @@ router.post(
 		});
 		res.json({ photo });
 	})
+);
+
+router.delete(
+	"/:id",
+	asyncHandler(async (req, res) => {})
 );
 
 module.exports = router;

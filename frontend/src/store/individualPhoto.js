@@ -8,7 +8,7 @@ function setPhotoUser(user) {
 
 export function setPhotoUserThunk(userId) {
 	return async function (dispatch) {
-		const res = await csrfFetch(`/api/photos/${userId}`);
+		const res = await csrfFetch(`/api/users/${userId}`);
 		if (res.ok) {
 			const { user } = await res.json();
 			dispatch(setPhotoUser(user));

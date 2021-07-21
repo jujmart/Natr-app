@@ -47,7 +47,8 @@ export function deletePhotoThunk(id) {
 			});
 
 			if (res.ok) {
-				dispatch(deletePhoto());
+				const { photo } = res.json();
+				dispatch(deletePhoto(photo.id));
 			}
 		} catch (err) {
 			return err.json();
@@ -60,6 +61,11 @@ export default function photosReducer(state = [], action) {
 	switch (action.type) {
 		case SET_PHOTOS:
 			return action.photos;
+		case DELETE_PHOTO:
+			const newDeleteState = state.filter(
+				(photo) => photo.id !== action.id
+			);
+			return newDeleteState;
 		default:
 			return state;
 	}

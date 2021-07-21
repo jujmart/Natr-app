@@ -2,7 +2,7 @@ const express = require("express");
 const asyncHandler = require("express-async-handler");
 const { check } = require("express-validator");
 
-const { setTokenCookie, requireAuth } = require("../../utils/auth");
+const { setTokenCookie } = require("../../utils/auth");
 const { User } = require("../../db/models");
 const { handleValidationErrors } = require("../../utils/validation");
 
@@ -44,6 +44,15 @@ router.post(
 		return res.json({
 			user,
 		});
+	})
+);
+
+router.get(
+	"/:id",
+	asyncHandler(async (req, res) => {
+		const { id } = req.params;
+		const user = await User.scope("postUser").findByPk(id);
+		return res.json({ user });
 	})
 );
 
