@@ -53,20 +53,21 @@ export default function Photo() {
 			{sessionUser &&
 			(sessionUser.username === "Demo-lition" ||
 				sessionUser.username === user?.username) ? (
-				<div className="individual-photo-delete-container">
-					<button
-						className="individual-photo-edit-button"
-						onClick={() => history.push(`/edit/${photoId}`)}
-					>
-						Edit Image
-					</button>
-					<button
-						className="individual-photo-delete-button"
-						onClick={handleDelete}
-					>
-						Delete Image
-					</button>
-
+				<div className="individual-photo-delete-and-edit-container">
+					<div className="individual-photo-delete-and-edit-buttons-container">
+						<button
+							className="individual-photo-edit-button"
+							onClick={() => history.push(`/edit/${photoId}`)}
+						>
+							Edit Image
+						</button>
+						<button
+							className="individual-photo-delete-button"
+							onClick={handleDelete}
+						>
+							Delete Image
+						</button>
+					</div>
 					{backendDeleteErrors.length ? (
 						<div>
 							<ul className="individual-photo-delete-errors">

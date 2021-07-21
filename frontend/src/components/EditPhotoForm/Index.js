@@ -23,13 +23,20 @@ export default function EditPhotoFormPage() {
 		e.preventDefault();
 
 		let res = await dispatch(
-			editPhotoThunk({ imageUrl, title, content, id: photoId })
+			editPhotoThunk({
+				imageUrl,
+				title,
+				content,
+				photoId,
+				userId: user.id,
+				username: user.username,
+			})
 		);
 
-		if (res) {
+		if (res.errors) {
 			setBackendErrors(res.errors);
 		} else {
-			history.push(`/photos/${res.id}`);
+			history.push(`/photos/${photoId}`);
 		}
 	}
 

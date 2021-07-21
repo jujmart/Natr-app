@@ -49,11 +49,23 @@ export function deletePhotoThunk(id) {
 export function editPhotoThunk(image) {
 	return async function (dispatch) {
 		try {
-			const { imageUrl, title, content, id } = image;
-			await csrfFetch(`/api/photos/${id}`, {
+			const { imageUrl, title, content, photoId, userId, username } =
+				image;
+			const res = await csrfFetch(`/api/photos/${photoId}`, {
 				method: "PUT",
-				body: JSON.stringify({ imageUrl, title, content }),
+				body: JSON.stringify({
+					imageUrl,
+					title,
+					content,
+					userId,
+					username,
+				}),
 			});
+
+			if (res.ok) {
+				const errors = await res.json();
+				return { errors };
+			}
 		} catch (err) {
 			return err.json();
 		}

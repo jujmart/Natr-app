@@ -50,4 +50,26 @@ router.delete(
 	})
 );
 
+router.put(
+	"/:id",
+	validateImage,
+	asyncHandler(async (req, res) => {
+		const { imageUrl, title, content, userId, username } = req.body;
+		const { id } = req.params;
+		const photo = await Image.findByPk(id);
+
+		if (photo.userId === userId || username === "Demo-lition") {
+			photo.imageUrl = imageUrl;
+			photo.title = title;
+			photo.content = content;
+			await photo.save();
+			res.status(200).json("");
+		} else {
+			res.json([
+				"Please make sure you are the original uploader of this image.",
+			]);
+		}
+	})
+);
+
 module.exports = router;
