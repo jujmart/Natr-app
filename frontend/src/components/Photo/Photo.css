@@ -65,3 +65,8 @@
 .individual-photo-delete-button:hover {
 	background-color: rgb(197, 4, 4);
 }
+
+.individual-photo-delete-errors {
+	color: red;
+	justify-content: center;
+}

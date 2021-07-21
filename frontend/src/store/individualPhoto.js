@@ -6,6 +6,22 @@ function setPhotoUser(user) {
 	return { type: GET_PHOTO_USER, user };
 }
 
+export function deletePhotoThunk(id) {
+	return async function (dispatch) {
+		try {
+			const res = await csrfFetch(`/api/photos/${id}`, {
+				method: "DELETE",
+			});
+
+			if (res.ok) {
+				dispatch();
+			}
+		} catch (err) {
+			return err.json();
+		}
+	};
+}
+
 export function setPhotoUserThunk(userId) {
 	return async function (dispatch) {
 		const res = await csrfFetch(`/api/photos/${userId}`);
