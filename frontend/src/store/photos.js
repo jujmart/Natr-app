@@ -1,9 +1,14 @@
 import { csrfFetch } from "./csrf";
 
 const SET_PHOTOS = "photos/SET_PHOTOS";
+const DELETE_PHOTO = "photos/DELETE_PHOTO";
 
 function setPhotos(photos) {
 	return { type: SET_PHOTOS, photos };
+}
+
+function deletePhoto(id) {
+	return { type: DELETE_PHOTO, id };
 }
 
 export function setPhotosThunk() {
@@ -27,6 +32,22 @@ export function uploadPhotoThunk(image) {
 				const { photo } = await res.json();
 				await dispatch(setPhotosThunk());
 				return photo;
+			}
+		} catch (err) {
+			return err.json();
+		}
+	};
+}
+
+export function deletePhotoThunk(id) {
+	return async function (dispatch) {
+		try {
+			const res = await csrfFetch(`/api/photos/${id}`, {
+				method: "DELETE",
+			});
+
+			if (res.ok) {
+				dispatch(deletePhoto());
 			}
 		} catch (err) {
 			return err.json();

@@ -2,11 +2,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 
-import {
-	deletePhotoThunk,
-	setPhotoUserThunk,
-} from "../../store/individualPhoto";
-import { setPhotosThunk } from "../../store/photos";
+import { setPhotoUserThunk } from "../../store/individualPhoto";
+import { deletePhotoThunk, setPhotosThunk } from "../../store/photos";
 import "./Photo.css";
 
 export default function Photo() {
