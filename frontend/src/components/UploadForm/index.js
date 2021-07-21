@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { uploadPhotoThunk } from "../../store/photos";
@@ -13,13 +13,15 @@ export default function UploadFormPage() {
 	const [backendErrors, setBackendErrors] = useState([]);
 	const dispatch = useDispatch();
 	const history = useHistory();
+	const { user } = useSelector((state) => state.session);
 
 	async function handleSubmit(e) {
 		e.preventDefault();
 
 		let res = await dispatch(
-			uploadPhotoThunk({ imageUrl, title, content })
+			uploadPhotoThunk({ imageUrl, title, content, userId: user.id })
 		);
+
 		if (res.errors) {
 			setBackendErrors(res.errors);
 		} else {
