@@ -18,8 +18,9 @@ export default function Photo() {
 
 	async function handleDelete() {
 		let res = await dispatch(deletePhotoThunk(photoId));
+
 		if (res) {
-			setBackendDeleteErrors(res.errors);
+			setBackendDeleteErrors(["Image has already been deleted."]);
 		} else {
 			history.push("/");
 		}

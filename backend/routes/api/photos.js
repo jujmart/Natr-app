@@ -42,7 +42,12 @@ router.post(
 
 router.delete(
 	"/:id",
-	asyncHandler(async (req, res) => {})
+	asyncHandler(async (req, res) => {
+		const { id } = req.params;
+		const photo = await Image.findByPk(id);
+		await photo.destroy();
+		res.status(204).json("Photo deleted");
+	})
 );
 
 module.exports = router;

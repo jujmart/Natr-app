@@ -70,3 +70,9 @@
 	color: red;
 	justify-content: center;
 }
+
+.individual-photo-delete-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
