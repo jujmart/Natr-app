@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import Navigation from "./components/Navigation";
 import Photo from "./components/Photo";
 import UploadPhotoForm from "./components/UploadPhotoForm";
+import EditPhotoForm from "./components/EditPhotoForm";
 import { restoreSessionUserThunk } from "./store/session";
 
 function App() {
@@ -30,6 +31,13 @@ function App() {
 				<Route path="/upload">
 					{!isLoaded ? null : user ? (
 						<UploadPhotoForm />
+					) : (
+						<Redirect to="/" />
+					)}
+				</Route>
+				<Route path="/edit/:photoId">
+					{!isLoaded ? null : user ? (
+						<EditPhotoForm />
 					) : (
 						<Redirect to="/" />
 					)}

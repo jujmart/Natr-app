@@ -46,6 +46,20 @@ export function deletePhotoThunk(id) {
 	};
 }
 
+export function editPhotoThunk(image) {
+	return async function (dispatch) {
+		try {
+			const { imageUrl, title, content, id } = image;
+			await csrfFetch(`/api/photos/${id}`, {
+				method: "PUT",
+				body: JSON.stringify({ imageUrl, title, content }),
+			});
+		} catch (err) {
+			return err.json();
+		}
+	};
+}
+
 export default function photosReducer(state = [], action) {
 	Object.freeze(state);
 	switch (action.type) {
