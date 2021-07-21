@@ -3,3 +3,7 @@
 	flex-direction: column;
 	align-items: center;
 }
+
+.upload-form-errors {
+	color: red;
+}
