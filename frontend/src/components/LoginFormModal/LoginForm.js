@@ -5,7 +5,7 @@ import { setClose, setShowSignup } from "../../store/modal";
 import { setSessionUserThunk } from "../../store/session";
 import styles from "./LoginForm.module.css";
 
-export default function LoginForm({ setShowLoginModal }) {
+export default function LoginForm() {
 	const [credential, setCredential] = useState("");
 	const [password, setPassword] = useState("");
 	const [backendErrors, setBackendErrors] = useState([]);

@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Modal } from "../../context/Modal";
@@ -13,11 +13,20 @@ function Navigation({ isLoaded }) {
 	const signup = useSelector((state) => state.modal.signup);
 	const login = useSelector((state) => state.modal.login);
 	const dispatch = useDispatch();
+	const history = useHistory();
 
 	let sessionLinks;
 	if (sessionUser) {
 		sessionLinks = (
 			<div className="nav-bar-buttons">
+				<button
+					className="nav-bar-upload-button"
+					onClick={() => {
+						history.push("/upload");
+					}}
+				>
+					Upload Image
+				</button>
 				<ProfileButton user={sessionUser} />
 			</div>
 		);

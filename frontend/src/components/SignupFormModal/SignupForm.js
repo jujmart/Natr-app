@@ -5,7 +5,7 @@ import { setClose, setShowLogin } from "../../store/modal";
 import { createSessionUserThunk } from "../../store/session";
 import styles from "./SignupForm.module.css";
 
-export default function SignupFormPage({ setShowSignupModal }) {
+export default function SignupFormPage() {
 	const [username, setUsername] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");

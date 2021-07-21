@@ -65,3 +65,18 @@
 	color: white;
 	padding-right: 15px;
 }
+
+.nav-bar-upload-button {
+	padding: 10px;
+	margin: 8px;
+	align-self: center;
+	font-size: 14px;
+	color: white;
+	background-color: green;
+	border-radius: 4px;
+	border-style: unset;
+}
+
+.nav-bar-upload-button:hover {
+	background-color: rgba(0, 128, 0, 0.856);
+}
