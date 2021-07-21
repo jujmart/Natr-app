@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { uploadPhotoThunk } from "../../store/photos";
 import "./UploadForm.css";
 
-export default function UploadFormPage() {
+export default function UploadPhotoFormPage() {
 	const [imageUrl, setImageUrl] = useState("");
 	const [title, setTitle] = useState("");
 	const [content, setContent] = useState("");

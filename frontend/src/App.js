@@ -5,7 +5,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import Navigation from "./components/Navigation";
 import Photo from "./components/Photo";
-import UploadForm from "./components/UploadForm";
+import UploadPhotoForm from "./components/UploadPhotoForm";
 import { restoreSessionUserThunk } from "./store/session";
 
 function App() {
@@ -29,7 +29,7 @@ function App() {
 				</Route>
 				<Route path="/upload">
 					{!isLoaded ? null : user ? (
-						<UploadForm />
+						<UploadPhotoForm />
 					) : (
 						<Redirect to="/" />
 					)}
