@@ -1,17 +1,30 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 import { setPhotoUserThunk } from "../../store/individualPhoto";
-import { setPhotosThunk } from "../../store/photos";
+import { deletePhotoThunk, setPhotosThunk } from "../../store/photos";
 import "./Photo.css";
 
 export default function Photo() {
 	const photos = useSelector((state) => state.photos);
 	const { user } = useSelector((state) => state.individualPhoto);
+	const sessionUser = useSelector((state) => state.session.user);
 	const dispatch = useDispatch();
 	const { photoId } = useParams();
 	const [currentPhoto, setCurrentPhoto] = useState({});
+	const [backendDeleteErrors, setBackendDeleteErrors] = useState([]);
+	const history = useHistory();
+
+	async function handleDelete() {
+		let res = await dispatch(deletePhotoThunk(photoId));
+
+		if (res) {
+			setBackendDeleteErrors(["Image has already been deleted."]);
+		} else {
+			history.push("/");
+		}
+	}
 
 	useEffect(() => {
 		dispatch(setPhotosThunk());
@@ -37,6 +50,27 @@ export default function Photo() {
 					className="individual-photo-img"
 				/>
 			</div>
+			{sessionUser &&
+			(sessionUser.username === "Demo-lition" ||
+				sessionUser.username === user?.username) ? (
+				<div className="individual-photo-delete-container">
+					<button
+						className="individual-photo-delete-button"
+						onClick={handleDelete}
+					>
+						Delete Image
+					</button>
+					{backendDeleteErrors.length ? (
+						<div>
+							<ul className="individual-photo-delete-errors">
+								{backendDeleteErrors.map((error) => (
+									<li key={error}>{error}</li>
+								))}
+							</ul>
+						</div>
+					) : null}
+				</div>
+			) : null}
 			<div className="individual-photo-user">
 				<div className="individual-photo-user-photo-container">
 					<img
