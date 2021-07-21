@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect, Route, Switch } from "react-router-dom";
 
 import Home from "./components/Home";
 import Navigation from "./components/Navigation";
 import Photo from "./components/Photo";
+import UploadForm from "./components/UploadForm";
 import { restoreSessionUserThunk } from "./store/session";
 
 function App() {
 	const [isLoaded, setIsLoaded] = useState(false);
 	const dispatch = useDispatch();
+	const { user } = useSelector((state) => state.session);
 
 	useEffect(() => {
 		dispatch(restoreSessionUserThunk()).then(() => setIsLoaded(true));
@@ -24,6 +26,19 @@ function App() {
 				</Route>
 				<Route path="/photos/:photoId">
 					<Photo />
+				</Route>
+				<Route path="/upload">
+					{!isLoaded ? null : user ? (
+						<UploadForm />
+					) : (
+						<Redirect to="/" />
+					)}
+				</Route>
+				<Route>
+					<h1 style={{ textAlign: "center" }}>
+						Page Not Found. <br /> <br />
+						Sorry!
+					</h1>
 				</Route>
 			</Switch>
 		</>

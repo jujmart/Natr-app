@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import { setPhotoUserThunk } from "../../store/individualPhoto";
-import { getPhotosThunk } from "../../store/photos";
+import { setPhotosThunk } from "../../store/photos";
 import "./Photo.css";
 
 export default function Photo() {
@@ -14,7 +14,7 @@ export default function Photo() {
 	const [currentPhoto, setCurrentPhoto] = useState({});
 
 	useEffect(() => {
-		dispatch(getPhotosThunk());
+		dispatch(setPhotosThunk());
 	}, [dispatch]);
 
 	useEffect(() => {

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { getPhotosThunk } from "../../store/photos";
+import { setPhotosThunk } from "../../store/photos";
 import "./Home.css";
 
 export default function Home() {
@@ -10,7 +10,7 @@ export default function Home() {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(getPhotosThunk());
+		dispatch(setPhotosThunk());
 	}, [dispatch]);
 
 	return (

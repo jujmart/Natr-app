@@ -1,17 +1,35 @@
 import { csrfFetch } from "./csrf";
 
-const GET_PHOTOS = "photos/GET_PHOTOS";
+const SET_PHOTOS = "photos/SET_PHOTOS";
 
-function getPhotos(photos) {
-	return { type: GET_PHOTOS, photos };
+function setPhotos(photos) {
+	return { type: SET_PHOTOS, photos };
 }
 
-export function getPhotosThunk() {
+export function setPhotosThunk() {
 	return async function (dispatch) {
 		const res = await csrfFetch("/api/photos");
 		if (res.ok) {
 			const { photos } = await res.json();
-			dispatch(getPhotos(photos));
+			dispatch(setPhotos(photos));
+		}
+	};
+}
+
+export function uploadPhotoThunk(image) {
+	return async function (dispatch) {
+		try {
+			const res = await csrfFetch("/api/photos", {
+				method: "POST",
+				body: JSON.stringify(image),
+			});
+			if (res.ok) {
+				const { photo } = await res.json();
+				await dispatch(setPhotosThunk());
+				return photo;
+			}
+		} catch (err) {
+			return err.json();
 		}
 	};
 }
@@ -19,7 +37,7 @@ export function getPhotosThunk() {
 export default function photosReducer(state = [], action) {
 	Object.freeze(state);
 	switch (action.type) {
-		case GET_PHOTOS:
+		case SET_PHOTOS:
 			return action.photos;
 		default:
 			return state;
