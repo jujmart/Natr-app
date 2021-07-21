@@ -50,3 +50,18 @@
 .individual-photo-user-username {
 	font-size: 20px;
 }
+
+.individual-photo-delete-button {
+	padding: 6px;
+	align-self: center;
+	font-size: 14px;
+	color: white;
+	background-color: red;
+	border-radius: 4px;
+	border-style: unset;
+	margin-bottom: 10px;
+}
+
+.individual-photo-delete-button:hover {
+	background-color: rgb(197, 4, 4);
+}

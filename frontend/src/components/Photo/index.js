@@ -9,6 +9,7 @@ import "./Photo.css";
 export default function Photo() {
 	const photos = useSelector((state) => state.photos);
 	const { user } = useSelector((state) => state.individualPhoto);
+	const sessionUser = useSelector((state) => state.session.user);
 	const dispatch = useDispatch();
 	const { photoId } = useParams();
 	const [currentPhoto, setCurrentPhoto] = useState({});
@@ -37,6 +38,15 @@ export default function Photo() {
 					className="individual-photo-img"
 				/>
 			</div>
+			{sessionUser &&
+			(sessionUser.username === "Demo-lition" ||
+				sessionUser.username === user?.username) ? (
+				<div className="individual-photo-delete-container">
+					<button className="individual-photo-delete-button">
+						Delete Image
+					</button>
+				</div>
+			) : null}
 			<div className="individual-photo-user">
 				<div className="individual-photo-user-photo-container">
 					<img

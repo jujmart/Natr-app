@@ -37,6 +37,8 @@ export default function SignupFormPage() {
 				errors.push("Username must have at least 4 characters");
 			if (username.length > 30)
 				errors.push("Username must have at most 30 characters");
+			if (username.includes(" "))
+				errors.push("Username must be one word");
 		}
 		if (email) {
 			if (!email.includes("@"))
