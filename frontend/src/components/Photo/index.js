@@ -13,7 +13,7 @@ import "./Photo.css";
 
 export default function Photo() {
 	const photos = useSelector((state) => state.photos);
-	// const comments = useSelector((state) => state.comments);
+	const comments = useSelector((state) => state.comments);
 	const { user } = useSelector((state) => state.individualPhoto);
 	const sessionUser = useSelector((state) => state.session.user);
 	const deleteConfirm = useSelector((state) => state.modal.delete);
@@ -108,7 +108,15 @@ export default function Photo() {
 			<div className="individual-photo-content">
 				{currentPhoto?.content}
 			</div>
-			<div className="individual-photo-comments-container"></div>
+			<div className="individual-photo-comments-container">
+				<div>
+					{comments.map((comment) => (
+						<div key={comment.id}>
+							<div>{comment.content}</div>
+						</div>
+					))}
+				</div>
+			</div>
 		</div>
 	);
 }

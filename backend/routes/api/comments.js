@@ -12,7 +12,10 @@ router.patch(
 		const { imageId } = req.body;
 		const comments = await Comment.findAll({
 			where: { imageId },
-			order: [["createdAt", "DESC"]],
+			order: [
+				["createdAt", "DESC"],
+				["id", "DESC"],
+			],
 		});
 		res.json({ comments });
 	})

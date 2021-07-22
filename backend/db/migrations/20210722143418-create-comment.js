@@ -19,7 +19,7 @@ module.exports = {
 					type: Sequelize.INTEGER,
 					references: { model: "Images" },
 				},
-				comment: {
+				content: {
 					allowNull: false,
 					type: Sequelize.TEXT,
 				},
