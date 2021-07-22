@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 
-import { editPhotoThunk } from "../../store/photos";
+import { editPhotoThunk, setPhotosThunk } from "../../store/photos";
 
 import "./EditPhotoForm.css";
 
@@ -15,9 +15,8 @@ export default function EditPhotoFormPage() {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const { user } = useSelector((state) => state.session);
+	const photos = useSelector((state) => state.photos);
 	const { photoId } = useParams();
-
-	// let photo;
 
 	async function handleSubmit(e) {
 		e.preventDefault();
@@ -39,6 +38,17 @@ export default function EditPhotoFormPage() {
 			history.push(`/photos/${photoId}`);
 		}
 	}
+
+	useEffect(() => {
+		dispatch(setPhotosThunk());
+	}, [dispatch]);
+
+	useEffect(() => {
+		const photo = photos.find((photo) => photo.id === +photoId);
+		setImageUrl(photo?.imageUrl);
+		setTitle(photo?.title);
+		setContent(photo?.content);
+	}, [photos, photoId]);
 
 	useEffect(() => {
 		let errors = [];
