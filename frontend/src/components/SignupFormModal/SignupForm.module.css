@@ -22,13 +22,20 @@
 	margin-top: 20px;
 	color: white;
 	background-color: green;
-	border-radius: 6px;
+	border-radius: 4px;
+	border-style: unset;
+}
+
+.signup-button:hover {
+	background-color: rgb(1, 99, 1);
 }
 
 .signup-button-disabled {
 	padding: 6px;
 	margin-top: 20px;
-	border-radius: 6px;
+	border-radius: 4px;
+	border-style: unset;
+	border: 1px solid lightgray;
 }
 
 .signup-form-login-button {

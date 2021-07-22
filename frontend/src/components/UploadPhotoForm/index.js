@@ -58,6 +58,7 @@ export default function UploadPhotoFormPage() {
 						<input
 							type="text"
 							required
+							className="upload-input"
 							value={imageUrl}
 							onChange={(e) => setImageUrl(e.target.value)}
 						/>
@@ -68,21 +69,30 @@ export default function UploadPhotoFormPage() {
 						Title (optional):
 						<input
 							type="text"
+							className="upload-input"
 							value={title}
 							onChange={(e) => setTitle(e.target.value)}
 						/>
 					</label>
 				</div>
-				<div>
-					<label>
+				<div className="upload-textarea-div">
+					<label className="upload-textarea-label">
 						Description (optional):
-						<textarea
-							value={content}
-							onChange={(e) => setContent(e.target.value)}
-						/>
 					</label>
+					<textarea
+						className="upload-textarea"
+						value={content}
+						onChange={(e) => setContent(e.target.value)}
+					/>
 				</div>
-				<button disabled={!!validationErrors.length || !imageUrl}>
+				<button
+					disabled={!!validationErrors.length || !imageUrl}
+					className={
+						!!validationErrors.length || !imageUrl
+							? "upload-button-disabled"
+							: "upload-button"
+					}
+				>
 					Upload
 				</button>
 			</form>

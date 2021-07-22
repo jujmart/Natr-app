@@ -53,6 +53,7 @@
 
 .individual-photo-delete-button {
 	padding: 6px;
+	margin: 4px;
 	align-self: center;
 	font-size: 14px;
 	color: white;
@@ -71,8 +72,24 @@
 	justify-content: center;
 }
 
-.individual-photo-delete-container {
+.individual-photo-delete-and-edit-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+}
+
+.individual-photo-edit-button {
+	padding: 6px;
+	margin: 4px;
+	align-self: center;
+	font-size: 14px;
+	color: white;
+	background-color: orange;
+	border-radius: 4px;
+	border-style: unset;
+	margin-bottom: 10px;
+}
+
+.individual-photo-edit-button:hover {
+	background-color: rgb(201, 131, 3);
 }
