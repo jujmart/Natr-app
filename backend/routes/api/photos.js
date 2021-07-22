@@ -20,7 +20,12 @@ const validateImage = [
 router.get(
 	"/",
 	asyncHandler(async (req, res) => {
-		const photos = await Image.findAll({ order: [["createdAt", "DESC"]] });
+		const photos = await Image.findAll({
+			order: [
+				["createdAt", "DESC"],
+				["id", "DESC"],
+			],
+		});
 		return res.json({ photos });
 	})
 );
