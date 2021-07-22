@@ -10,8 +10,7 @@ module.exports = {
 	  */
 		return queryInterface.bulkInsert(
 			"Comments",
-			// [{ userId: 1, imageId: 1, comment: "I would love to be here!" }],
-			null,
+			[{ userId: 1, imageId: 1, comment: "I would love to be here!" }],
 			{}
 		);
 	},
