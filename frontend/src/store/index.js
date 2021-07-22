@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 
+import commentsReducer from "./comments";
 import individualPhotoReducer from "./individualPhoto";
 import modalReducer from "./modal";
 import photosReducer from "./photos";
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
 	photos: photosReducer,
 	individualPhoto: individualPhotoReducer,
 	modal: modalReducer,
+	comments: commentsReducer,
 });
 
 let enhancer;
