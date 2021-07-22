@@ -5,7 +5,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { Modal } from "../../context/Modal";
 import { setPhotoUserThunk } from "../../store/individualPhoto";
 import { setClose, setShowDeleteConfirm } from "../../store/modal";
-import { deletePhotoThunk, setPhotosThunk } from "../../store/photos";
+import { setPhotosThunk } from "../../store/photos";
 import DeleteConfirm from "./DeleteConfirm";
 
 import "./Photo.css";
