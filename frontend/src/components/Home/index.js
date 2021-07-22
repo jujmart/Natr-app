@@ -18,7 +18,7 @@ export default function Home() {
 			<div className="homepage-container">
 				<div className="homepage-photo-container">
 					{photos.map((photo) => (
-						<span key={photo.id} className="homepage-photo-span">
+						<div key={photo.id} className="homepage-photo-div">
 							<Link to={`/photos/${photo.id}`}>
 								<img
 									src={photo.imageUrl}
@@ -26,7 +26,7 @@ export default function Home() {
 									className="homepage-photo-img"
 								/>
 							</Link>
-						</span>
+						</div>
 					))}
 				</div>
 			</div>
