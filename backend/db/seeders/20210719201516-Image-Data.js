@@ -47,6 +47,19 @@ module.exports = {
 
       Example:
 	  */
-		return queryInterface.bulkDelete("Images", null, {});
+		const Op = Sequelize.Op;
+		return queryInterface.bulkDelete(
+			"Images",
+			{
+				content: {
+					[Op.in]: [
+						"Nice contrast in colors of leaves and fog on the lake",
+						"Sun rising on mountains in background while the river flows in the foreground",
+						"The river flows through the thick vegetation and logs that have fallen into its path",
+					],
+				},
+			},
+			{}
+		);
 	},
 };
