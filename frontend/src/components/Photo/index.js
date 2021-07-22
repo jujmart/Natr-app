@@ -111,8 +111,22 @@ export default function Photo() {
 			<div className="individual-photo-comments-container">
 				<div>
 					{comments.map((comment) => (
-						<div key={comment.id}>
-							<div>{comment.content}</div>
+						<div
+							key={comment.id}
+							className="individual-photo-individual-comment-container"
+						>
+							<img
+								src={comment.User.profilePhotoUrl}
+								alt="Profile Pic"
+								className="individual-photo-comment-user-photo"
+							/>
+							<div>
+								<div>
+									<div>{comment.User.username}</div>
+									<div>{comment.updatedAt}</div>
+								</div>
+								<div>{comment.content}</div>
+							</div>
 						</div>
 					))}
 				</div>

@@ -1,7 +1,7 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 
-const { Comment } = require("../../db/models");
+const { Comment, User } = require("../../db/models");
 
 const router = express.Router();
 
@@ -16,6 +16,7 @@ router.patch(
 				["createdAt", "DESC"],
 				["id", "DESC"],
 			],
+			include: User.scope("postUser"),
 		});
 		res.json({ comments });
 	})

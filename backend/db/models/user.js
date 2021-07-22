@@ -60,7 +60,12 @@ module.exports = (sequelize, DataTypes) => {
 				},
 				postUser: {
 					attributes: {
-						exclude: ["hashedPassword", "email", "createdAt"],
+						exclude: [
+							"hashedPassword",
+							"email",
+							"createdAt",
+							"updatedAt",
+						],
 					},
 				},
 			},

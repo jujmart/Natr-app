@@ -45,8 +45,8 @@
 }
 
 .individual-photo-user-photo {
-	height: 40px;
-	width: 40px;
+	height: 45px;
+	width: 45px;
 	border-radius: 50%;
 }
 
@@ -141,4 +141,14 @@
 
 .individual-photo-confirm-delete-button:hover {
 	background-color: rgb(197, 4, 4);
+}
+
+.individual-photo-comment-user-photo {
+	height: 30px;
+	width: 30px;
+	border-radius: 50%;
+}
+
+.individual-photo-individual-comment-container {
+	display: flex;
 }
