@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 
 import { Modal } from "../../context/Modal";
+import { setCommentsThunk } from "../../store/comments";
 import { setPhotoUserThunk } from "../../store/individualPhoto";
 import { setClose, setShowDeleteConfirm } from "../../store/modal";
 import { setPhotosThunk } from "../../store/photos";
@@ -12,6 +13,7 @@ import "./Photo.css";
 
 export default function Photo() {
 	const photos = useSelector((state) => state.photos);
+	// const comments = useSelector((state) => state.comments);
 	const { user } = useSelector((state) => state.individualPhoto);
 	const sessionUser = useSelector((state) => state.session.user);
 	const deleteConfirm = useSelector((state) => state.modal.delete);
@@ -33,6 +35,12 @@ export default function Photo() {
 	useEffect(() => {
 		if (currentPhoto?.userId) {
 			dispatch(setPhotoUserThunk(currentPhoto.userId));
+		}
+	}, [dispatch, currentPhoto]);
+
+	useEffect(() => {
+		if (currentPhoto?.id) {
+			dispatch(setCommentsThunk(currentPhoto.id));
 		}
 	}, [dispatch, currentPhoto]);
 

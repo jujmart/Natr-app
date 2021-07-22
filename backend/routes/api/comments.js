@@ -5,7 +5,8 @@ const { Comment } = require("../../db/models");
 
 const router = express.Router();
 
-router.get(
+// GET route but I needed something that could handle bringing in a body (didnt want to change the actual route to include the photoId)
+router.patch(
 	"/",
 	asyncHandler(async (req, res) => {
 		const { imageId } = req.body;

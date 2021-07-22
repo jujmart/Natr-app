@@ -9,6 +9,7 @@ function setComments(comments) {
 export function setCommentsThunk(imageId) {
 	return async function (dispatch) {
 		const res = await csrfFetch(`/api/comments`, {
+			method: "PATCH",
 			body: JSON.stringify({ imageId }),
 		});
 
