@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { Redirect, useHistory, useParams } from "react-router-dom";
 
 import { editPhotoThunk, setPhotosThunk } from "../../store/photos";
 
@@ -71,7 +71,11 @@ export default function EditPhotoFormPage() {
 		setValidationErrors(errors);
 	}, [imageUrl]);
 
-	// if (user.id !== )
+	if (!currentPhoto || currentPhoto === {}) return null;
+
+	if (currentPhoto?.userId && currentPhoto.userId !== user.id) {
+		return <Redirect to="/" />;
+	}
 
 	return (
 		<>
