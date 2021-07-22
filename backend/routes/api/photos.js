@@ -26,7 +26,7 @@ router.get(
 				["id", "DESC"],
 			],
 		});
-		return res.json({ photos });
+		res.json({ photos });
 	})
 );
 
