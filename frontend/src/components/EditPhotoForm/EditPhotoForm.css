@@ -4,11 +4,54 @@
 	align-items: center;
 }
 
+.edit-form-edited-image-div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border: 3px solid black;
+}
+
 .edit-form-errors {
 	color: red;
+}
+
+.edit-form {
+	display: flex;
+	flex-direction: column;
 }
 
 .individual-photo-img-small {
 	max-height: 400px;
 	max-width: 400px;
+}
+
+.edit-input {
+	margin: 5px;
+}
+
+.edit-textarea-div {
+	display: flex;
+	align-items: flex-start;
+}
+
+.edit-textarea {
+	margin: 5px;
+}
+
+.edit-textarea-label {
+	margin-top: 5px;
+}
+
+.edit-button {
+	padding: 6px;
+	margin-top: 20px;
+	color: white;
+	background-color: green;
+	border-radius: 6px;
+}
+
+.edit-button-disabled {
+	padding: 6px;
+	margin-top: 20px;
+	border-radius: 6px;
 }

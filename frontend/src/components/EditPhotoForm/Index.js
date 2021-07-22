@@ -84,6 +84,7 @@ export default function EditPhotoFormPage() {
 							<input
 								type="text"
 								required
+								className="edit-input"
 								value={imageUrl}
 								onChange={(e) => setImageUrl(e.target.value)}
 							/>
@@ -94,21 +95,30 @@ export default function EditPhotoFormPage() {
 							Title (optional):
 							<input
 								type="text"
+								className="edit-input"
 								value={title}
 								onChange={(e) => setTitle(e.target.value)}
 							/>
 						</label>
 					</div>
-					<div>
-						<label>
+					<div className="edit-textarea-div">
+						<label className="edit-textarea-label">
 							Description (optional):
-							<textarea
-								value={content}
-								onChange={(e) => setContent(e.target.value)}
-							/>
 						</label>
+						<textarea
+							className="edit-textarea"
+							value={content}
+							onChange={(e) => setContent(e.target.value)}
+						/>
 					</div>
-					<button disabled={!!validationErrors.length || !imageUrl}>
+					<button
+						disabled={!!validationErrors.length || !imageUrl}
+						className={
+							!!validationErrors.length || !imageUrl
+								? "edit-button-disabled"
+								: "edit-button"
+						}
+					>
 						Update
 					</button>
 				</form>
@@ -123,7 +133,7 @@ export default function EditPhotoFormPage() {
 					</ul>
 				</div>
 			</div>
-			<div className="edit-form-div">
+			<div className="edit-form-edited-image-div">
 				<h3>The image you are editing:</h3>
 				<div className="individual-photo-container">
 					<div className="individual-photo-img-container">

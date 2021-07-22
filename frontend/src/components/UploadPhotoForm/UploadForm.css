@@ -7,3 +7,39 @@
 .upload-form-errors {
 	color: red;
 }
+
+.upload-form {
+	display: flex;
+	flex-direction: column;
+}
+
+.upload-input {
+	margin: 5px;
+}
+
+.upload-textarea-div {
+	display: flex;
+	align-items: flex-start;
+}
+
+.upload-textarea {
+	margin: 5px;
+}
+
+.upload-textarea-label {
+	margin-top: 5px;
+}
+
+.upload-button {
+	padding: 6px;
+	margin-top: 20px;
+	color: white;
+	background-color: green;
+	border-radius: 6px;
+}
+
+.upload-button-disabled {
+	padding: 6px;
+	margin-top: 20px;
+	border-radius: 6px;
+}
