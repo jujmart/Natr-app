@@ -15,18 +15,20 @@ export default function Home() {
 
 	return (
 		<>
-			<div className="homepage-photo-container">
-				{photos.map((photo) => (
-					<div key={photo.id} className="homepage-photo">
-						<Link to={`/photos/${photo.id}`}>
-							<img
-								src={photo.imageUrl}
-								alt={photo.title}
-								className="homepage-photo-img"
-							/>
-						</Link>
-					</div>
-				))}
+			<div className="homepage-container">
+				<div className="homepage-photo-container">
+					{photos.map((photo) => (
+						<div key={photo.id} className="homepage-photo-div">
+							<Link to={`/photos/${photo.id}`}>
+								<img
+									src={photo.imageUrl}
+									alt={photo.title}
+									className="homepage-photo-img"
+								/>
+							</Link>
+						</div>
+					))}
+				</div>
 			</div>
 		</>
 	);

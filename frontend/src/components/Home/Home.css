@@ -1,10 +1,24 @@
-.homepage-photo-container {
+.homepage-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
+.homepage-photo-container {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	width: 80%;
+}
+
 .homepage-photo-img {
-	height: auto;
-	max-width: 100%;
+	height: 100%;
+	width: 100%;
+}
+
+.homepage-photo-div {
+	box-sizing: border-box;
+	width: 300px;
+	height: 300px;
+	padding: 2px;
 }

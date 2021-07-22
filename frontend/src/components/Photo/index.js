@@ -2,29 +2,24 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 
+import { Modal } from "../../context/Modal";
 import { setPhotoUserThunk } from "../../store/individualPhoto";
+import { setClose, setShowDeleteConfirm } from "../../store/modal";
 import { deletePhotoThunk, setPhotosThunk } from "../../store/photos";
+import DeleteConfirm from "./DeleteConfirm";
+
 import "./Photo.css";
 
 export default function Photo() {
 	const photos = useSelector((state) => state.photos);
 	const { user } = useSelector((state) => state.individualPhoto);
 	const sessionUser = useSelector((state) => state.session.user);
+	const deleteConfirm = useSelector((state) => state.modal.delete);
 	const dispatch = useDispatch();
 	const { photoId } = useParams();
 	const [currentPhoto, setCurrentPhoto] = useState({});
 	const [backendDeleteErrors, setBackendDeleteErrors] = useState([]);
 	const history = useHistory();
-
-	async function handleDelete() {
-		let res = await dispatch(deletePhotoThunk(photoId));
-
-		if (res) {
-			setBackendDeleteErrors(["Image has already been deleted."]);
-		} else {
-			history.push("/");
-		}
-	}
 
 	useEffect(() => {
 		dispatch(setPhotosThunk());
@@ -63,10 +58,20 @@ export default function Photo() {
 						</button>
 						<button
 							className="individual-photo-delete-button"
-							onClick={handleDelete}
+							onClick={() => dispatch(setShowDeleteConfirm())}
 						>
 							Delete Image
 						</button>
+						{deleteConfirm ? (
+							<Modal onClose={() => dispatch(setClose())}>
+								<DeleteConfirm
+									photoId={photoId}
+									setBackendDeleteErrors={
+										setBackendDeleteErrors
+									}
+								/>
+							</Modal>
+						) : null}
 					</div>
 					{backendDeleteErrors.length ? (
 						<div>

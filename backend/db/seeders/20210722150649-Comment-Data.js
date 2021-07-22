@@ -25,7 +25,8 @@ module.exports = {
 		const Op = Sequelize.Op;
 		return queryInterface.bulkDelete(
 			"Comments",
-			{ comment: { [Op.in]: ["I would love to be here!"] } },
+			// { comment: { [Op.in]: ["I would love to be here!"] } },
+			null,
 			{}
 		);
 	},
