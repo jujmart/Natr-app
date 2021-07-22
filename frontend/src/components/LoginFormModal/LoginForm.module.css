@@ -22,7 +22,12 @@
 	margin-top: 20px;
 	color: white;
 	background-color: green;
-	border-radius: 6px;
+	border-radius: 4px;
+	border-style: unset;
+}
+
+.login-button:hover {
+	background-color: rgb(1, 99, 1);
 }
 
 .login-form-signin-button {
