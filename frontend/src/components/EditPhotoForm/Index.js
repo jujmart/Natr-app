@@ -12,6 +12,7 @@ export default function EditPhotoFormPage() {
 	const [content, setContent] = useState("");
 	const [validationErrors, setValidationErrors] = useState([]);
 	const [backendErrors, setBackendErrors] = useState([]);
+	const [currentPhoto, setCurrentPhoto] = useState({});
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const { user } = useSelector((state) => state.session);
@@ -45,6 +46,7 @@ export default function EditPhotoFormPage() {
 
 	useEffect(() => {
 		const photo = photos.find((photo) => photo.id === +photoId);
+		setCurrentPhoto(photo);
 		setImageUrl(photo?.imageUrl);
 		setTitle(photo?.title);
 		setContent(photo?.content);
@@ -72,53 +74,73 @@ export default function EditPhotoFormPage() {
 	// if (user.id !== )
 
 	return (
-		<div className="edit-form-div">
-			<h2>Edit Image</h2>
-			<form className="edit-form" onSubmit={handleSubmit}>
+		<>
+			<div className="edit-form-div">
+				<h2>Edit Image</h2>
+				<form className="edit-form" onSubmit={handleSubmit}>
+					<div>
+						<label>
+							Image Url:
+							<input
+								type="text"
+								required
+								value={imageUrl}
+								onChange={(e) => setImageUrl(e.target.value)}
+							/>
+						</label>
+					</div>
+					<div>
+						<label>
+							Title (optional):
+							<input
+								type="text"
+								value={title}
+								onChange={(e) => setTitle(e.target.value)}
+							/>
+						</label>
+					</div>
+					<div>
+						<label>
+							Description (optional):
+							<textarea
+								value={content}
+								onChange={(e) => setContent(e.target.value)}
+							/>
+						</label>
+					</div>
+					<button disabled={!!validationErrors.length || !imageUrl}>
+						Update
+					</button>
+				</form>
 				<div>
-					<label>
-						Image Url:
-						<input
-							type="text"
-							required
-							value={imageUrl}
-							onChange={(e) => setImageUrl(e.target.value)}
-						/>
-					</label>
+					<ul className="edit-form-errors">
+						{backendErrors.map((error) => (
+							<li key={error}>{error}</li>
+						))}
+						{validationErrors.map((error) => (
+							<li key={error}>{error}</li>
+						))}
+					</ul>
 				</div>
-				<div>
-					<label>
-						Title (optional):
-						<input
-							type="text"
-							value={title}
-							onChange={(e) => setTitle(e.target.value)}
-						/>
-					</label>
-				</div>
-				<div>
-					<label>
-						Description (optional):
-						<textarea
-							value={content}
-							onChange={(e) => setContent(e.target.value)}
-						/>
-					</label>
-				</div>
-				<button disabled={!!validationErrors.length || !imageUrl}>
-					Update
-				</button>
-			</form>
-			<div>
-				<ul className="edit-form-errors">
-					{backendErrors.map((error) => (
-						<li key={error}>{error}</li>
-					))}
-					{validationErrors.map((error) => (
-						<li key={error}>{error}</li>
-					))}
-				</ul>
 			</div>
-		</div>
+			<div className="edit-form-div">
+				<h3>The image you are editing:</h3>
+				<div className="individual-photo-container">
+					<div className="individual-photo-img-container">
+						<img
+							src={currentPhoto?.imageUrl}
+							alt={currentPhoto?.title}
+							className="individual-photo-img-small"
+						/>
+					</div>
+					<div className="individual-photo-title">
+						{currentPhoto?.title}
+					</div>
+					<div className="individual-photo-content">
+						{currentPhoto?.content}
+					</div>
+				</div>
+			</div>
+		</>
 	);
 }
