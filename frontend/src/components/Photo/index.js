@@ -158,14 +158,17 @@ export default function Photo() {
 									<div className="individual-photo-individual-comment-content">
 										{comment.content}
 									</div>
-									<div className="individual-photo-individual-comment-edit-and-delete-buttons">
-										<button className="individual-photo-individual-comment-edit-button">
-											Edit
-										</button>
-										<button className="individual-photo-individual-comment-delete-button">
-											Delete
-										</button>
-									</div>
+									{comment.userId === sessionUser?.id ||
+									sessionUser?.username === "Demo-lition" ? (
+										<div className="individual-photo-individual-comment-edit-and-delete-buttons">
+											<button className="individual-photo-individual-comment-edit-button">
+												Edit
+											</button>
+											<button className="individual-photo-individual-comment-delete-button">
+												Delete
+											</button>
+										</div>
+									) : null}
 								</div>
 							</div>
 						</div>

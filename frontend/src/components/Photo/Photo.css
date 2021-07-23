@@ -252,3 +252,7 @@
 .individual-photo-individual-comment-delete-button:hover {
 	background-color: rgb(197, 4, 4);
 }
+
+.individual-photo-individual-comment-edit-and-delete-buttons {
+	display: flex;
+}
