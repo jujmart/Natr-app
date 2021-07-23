@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 
 import { Modal } from "../../context/Modal";
-import { setCommentsThunk } from "../../store/comments";
+import { addCommentThunk, setCommentsThunk } from "../../store/comments";
 import { setPhotoUserThunk } from "../../store/individualPhoto";
 import { setClose, setShowDeleteConfirm } from "../../store/modal";
 import { setPhotosThunk } from "../../store/photos";
@@ -26,10 +26,18 @@ export default function Photo() {
 	const history = useHistory();
 
 	async function handleAddComment() {
-		// const res = await dispatch(addComment({ content: newComment }));
-		// if (res) {
-		// 	setBackendCommentErrors(res.errors);
-		// }
+		const res = await dispatch(
+			addCommentThunk({
+				userId: sessionUser.id,
+				imageId: currentPhoto.id,
+				content: newComment,
+			})
+		);
+		if (res) {
+			setBackendCommentErrors(res.errors);
+		} else {
+			setNewComment("");
+		}
 	}
 
 	useEffect(() => {
@@ -125,14 +133,14 @@ export default function Photo() {
 							className="individual-photo-individual-comment-container"
 						>
 							<img
-								src={comment.User.profilePhotoUrl}
+								src={comment.User?.profilePhotoUrl}
 								alt="Profile Pic"
 								className="individual-photo-individual-comment-user-photo"
 							/>
 							<div>
 								<div className="individual-photo-individual-comment-username-and-updated-date">
 									<div className="individual-photo-individual-comment-username">
-										{comment.User.username}
+										{comment.User?.username}
 									</div>
 									<div className="individual-photo-individual-comment-updated-date">
 										{comment.updatedAt}

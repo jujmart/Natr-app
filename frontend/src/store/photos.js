@@ -25,7 +25,6 @@ export function uploadPhotoThunk(image) {
 			});
 			if (res.ok) {
 				const { photo } = await res.json();
-				await dispatch(setPhotosThunk());
 				return photo;
 			}
 		} catch (err) {
