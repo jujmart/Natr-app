@@ -4,6 +4,7 @@ const SET_COMMENTS = "/comments/SET_COMMENTS";
 const ADD_COMMENT = "/comments/ADD_COMMENT";
 const UNSET_COMMENTS = "/comments/UNSET_COMMENTS";
 const DELETE_COMMENT = "/comments/DELETE_COMMENT";
+const EDIT_COMMENT = "/comments/EDIT_COMMENT";
 
 function setComments(comments) {
 	return { type: SET_COMMENTS, comments };
@@ -19,6 +20,10 @@ export function unsetComments() {
 
 function deleteComment(id) {
 	return { type: DELETE_COMMENT, id };
+}
+
+function editComment(comment) {
+	return { type: EDIT_COMMENT, comment };
 }
 
 export function setCommentsThunk(imageId) {
@@ -66,6 +71,23 @@ export function deleteCommentThunk(id) {
 	};
 }
 
+export function editCommentThunk({ id, content }) {
+	return async function (dispatch) {
+		try {
+			const res = await csrfFetch(`/api/comments/${id}`, {
+				method: "PUT",
+				body: JSON.stringify({ content }),
+			});
+			if (res.ok) {
+				const { comment } = await res.json();
+				dispatch(editComment(comment));
+			}
+		} catch (err) {
+			return err.json();
+		}
+	};
+}
+
 export default function commentsReducer(state = [], action) {
 	Object.freeze(state);
 	switch (action.type) {
@@ -77,6 +99,14 @@ export default function commentsReducer(state = [], action) {
 			return [];
 		case DELETE_COMMENT:
 			return state.filter((comment) => comment.id !== +action.id);
+		case EDIT_COMMENT:
+			return state.map((comment) => {
+				if (comment.id === action.comment.id) {
+					return action.comment;
+				} else {
+					return comment;
+				}
+			});
 		default:
 			return state;
 	}

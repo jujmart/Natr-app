@@ -6,6 +6,7 @@ import { Modal } from "../../context/Modal";
 import {
 	addCommentThunk,
 	deleteCommentThunk,
+	editCommentThunk,
 	setCommentsThunk,
 	unsetComments,
 } from "../../store/comments";
@@ -67,8 +68,9 @@ export default function Photo() {
 	}
 
 	async function handleEditComment(commentId) {
-		const res = await dispatch();
-		// editCommentThunk({ id: commentId, content: editedComment })
+		const res = await dispatch(
+			editCommentThunk({ id: commentId, content: editedComment })
+		);
 		if (res) {
 			setBackendCommentEditErrors(res.errors);
 		}
