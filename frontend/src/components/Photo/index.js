@@ -35,9 +35,9 @@ export default function Photo() {
 	// const [backendCommentDeleteErrors, setBackendCommentDeleteErrors] =
 	// 	useState([]);
 	const [backendCommentErrors, setBackendCommentErrors] = useState([]);
-	const [backendCommentEditErrors, setBackendCommentEditErrors] = useState(
-		[]
-	);
+	// const [backendCommentEditErrors, setBackendCommentEditErrors] = useState(
+	// 	[]
+	// );
 	const history = useHistory();
 
 	window.onbeforeunload = function (e) {
@@ -72,7 +72,7 @@ export default function Photo() {
 			editCommentThunk({ id: commentId, content: editedComment })
 		);
 		if (res) {
-			setBackendCommentEditErrors(res.errors);
+			// setBackendCommentEditErrors(res.errors);
 		} else {
 			setEditId(0);
 		}
