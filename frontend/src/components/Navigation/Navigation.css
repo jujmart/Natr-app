@@ -127,4 +127,9 @@
 	border-radius: 4px;
 	border-style: unset;
 	margin-top: 4px;
+	background-color: white;
+}
+
+.nav-bar-logout-button:hover {
+	background-color: rgb(211, 209, 209);
 }

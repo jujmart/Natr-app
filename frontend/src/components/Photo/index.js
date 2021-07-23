@@ -20,8 +20,17 @@ export default function Photo() {
 	const dispatch = useDispatch();
 	const { photoId } = useParams();
 	const [currentPhoto, setCurrentPhoto] = useState({});
+	const [newComment, setNewComment] = useState("");
 	const [backendDeleteErrors, setBackendDeleteErrors] = useState([]);
+	const [backendCommentErrors, setBackendCommentErrors] = useState([]);
 	const history = useHistory();
+
+	async function handleAddComment() {
+		// const res = await dispatch(addComment({ content: newComment }));
+		// if (res) {
+		// 	setBackendCommentErrors(res.errors);
+		// }
+	}
 
 	useEffect(() => {
 		dispatch(setPhotosThunk());
@@ -135,6 +144,31 @@ export default function Photo() {
 							</div>
 						</div>
 					))}
+				</div>
+				<div className="individual-photo-individual-comment-add-comment-container">
+					{backendCommentErrors.length ? (
+						<div>
+							<ul className="individual-photo-comment-errors">
+								{backendCommentErrors.map((error) => (
+									<li key={error}>{error}</li>
+								))}
+							</ul>
+						</div>
+					) : null}
+					<textarea
+						value={newComment}
+						onChange={(e) => setNewComment(e.target.value)}
+						className="individual-photo-individual-comment-add-comment"
+						placeholder="Add a comment"
+					/>
+					{newComment ? (
+						<button
+							className="individual-photo-individual-comment-add-comment-button"
+							onClick={handleAddComment}
+						>
+							Comment
+						</button>
+					) : null}
 				</div>
 			</div>
 		</div>
