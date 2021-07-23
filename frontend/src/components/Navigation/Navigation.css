@@ -35,9 +35,10 @@
 
 .nav-bar-signup-button {
 	padding: 10px;
+	margin-right: 4px;
 	align-self: center;
 	font-size: 14px;
-	color: lightgray;
+	color: white;
 	background-color: blue;
 	border-radius: 4px;
 	border-style: unset;
@@ -49,9 +50,10 @@
 
 .nav-bar-login-button {
 	padding: 10px;
+	margin-left: 2px;
 	align-self: center;
 	font-size: 14px;
-	color: lightgray;
+	color: white;
 	background-color: blue;
 	border-radius: 4px;
 	border-style: unset;
@@ -63,7 +65,18 @@
 
 .profile-dropdown {
 	color: white;
-	padding-right: 15px;
+	padding: 3px 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	list-style: none;
+	margin: 5px 2px;
+}
+
+.profile-item {
+	margin: 1px 0px;
 }
 
 .nav-bar-upload-button {
@@ -106,4 +119,17 @@
 
 .nav-bar-demouser-button:hover {
 	background-color: rgb(1, 99, 1);
+}
+
+.nav-bar-logout-button {
+	padding: 2px 16px;
+	font-size: 14px;
+	border-radius: 4px;
+	border-style: unset;
+	margin-top: 4px;
+	background-color: white;
+}
+
+.nav-bar-logout-button:hover {
+	background-color: rgb(211, 209, 209);
 }

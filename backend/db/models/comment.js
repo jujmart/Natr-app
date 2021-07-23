@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
 		{
 			userId: { type: DataTypes.INTEGER, allowNull: false },
 			imageId: { type: DataTypes.INTEGER, allowNull: false },
-			comment: { type: DataTypes.TEXT, allowNull: false },
+			content: { type: DataTypes.TEXT, allowNull: false },
 		},
 		{}
 	);

@@ -27,7 +27,7 @@
 .individual-photo-content {
 	width: 87%;
 	text-align: center;
-	margin-bottom: 10px;
+	margin-bottom: 25px;
 	font-size: 16px;
 	font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
@@ -45,8 +45,8 @@
 }
 
 .individual-photo-user-photo {
-	height: 40px;
-	width: 40px;
+	height: 45px;
+	width: 45px;
 	border-radius: 50%;
 }
 
@@ -110,7 +110,6 @@
 	margin-left: 30px;
 	align-self: center;
 	font-size: 14px;
-	/* color: white; */
 	background-color: yellow;
 	border-radius: 4px;
 	border-style: unset;
@@ -142,4 +141,75 @@
 
 .individual-photo-confirm-delete-button:hover {
 	background-color: rgb(197, 4, 4);
+}
+
+.individual-photo-individual-comment-user-photo {
+	height: 35px;
+	width: 35px;
+	border-radius: 50%;
+	padding: 5px;
+	padding-right: 10px;
+}
+
+.individual-photo-individual-comment-container {
+	display: flex;
+	font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+	padding: 7px;
+	align-items: center;
+}
+
+.individual-photo-individual-comment-username-and-updated-date {
+	display: flex;
+}
+
+.individual-photo-comments-container {
+	padding: 20px;
+	border-top: 2px solid lightgray;
+}
+
+.individual-photo-individual-comment-username {
+	color: #006dac;
+	font-weight: 500;
+	padding-right: 15px;
+}
+
+.individual-photo-individual-comment-content {
+	padding-top: 3px;
+}
+
+.individual-photo-individual-comment-updated-date {
+	color: rgb(146, 145, 145);
+}
+
+.individual-photo-individual-comment-add-comment {
+	font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+	font-size: 15px;
+	padding: 3px 6px;
+	margin: 8px;
+	margin-left: 55px;
+}
+
+.individual-photo-individual-comment-add-comment-button {
+	padding: 6px 11px;
+	align-self: flex-start;
+	font-size: 14px;
+	color: white;
+	background-color: #006dac;
+	border-radius: 4px;
+	border-style: unset;
+	margin-bottom: 8px;
+	margin-left: 55px;
+}
+
+.individual-photo-individual-comment-add-comment-button:hover {
+	background-color: #015686;
+}
+
+.individual-photo-individual-comment-add-comment-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.individual-photo-comment-errors {
+	color: red;
 }

@@ -11,236 +11,236 @@ module.exports = {
 		return queryInterface.bulkInsert(
 			"Comments",
 			[
-				{ userId: 1, imageId: 1, comment: "Beautiful!" },
-				{ userId: 2, imageId: 1, comment: "This is amazing" },
+				{ userId: 1, imageId: 1, content: "Beautiful!" },
+				{ userId: 2, imageId: 1, content: "This is amazing" },
 				{
 					userId: 3,
 					imageId: 1,
-					comment:
+					content:
 						"Need to have my camera at all times just in case I stumble across something like this",
 				},
-				{ userId: 3, imageId: 1, comment: "I've seen better hahaha" },
-				{ userId: 2, imageId: 1, comment: "DUDE" },
-				{ userId: 1, imageId: 2, comment: "Beautiful!" },
-				{ userId: 2, imageId: 2, comment: "This is amazing" },
+				{ userId: 3, imageId: 1, content: "I've seen better hahaha" },
+				{ userId: 2, imageId: 1, content: "DUDE" },
+				{ userId: 1, imageId: 2, content: "Beautiful!" },
+				{ userId: 2, imageId: 2, content: "This is amazing" },
 				{
 					userId: 3,
 					imageId: 2,
-					comment:
+					content:
 						"Need to have my camera at all times just in case I stumble across something like this",
 				},
-				{ userId: 3, imageId: 2, comment: "I've seen better hahaha" },
-				{ userId: 2, imageId: 2, comment: "DUDE" },
-				{ userId: 1, imageId: 3, comment: "Beautiful!" },
-				{ userId: 2, imageId: 3, comment: "This is amazing" },
+				{ userId: 3, imageId: 2, content: "I've seen better hahaha" },
+				{ userId: 2, imageId: 2, content: "DUDE" },
+				{ userId: 1, imageId: 3, content: "Beautiful!" },
+				{ userId: 2, imageId: 3, content: "This is amazing" },
 				{
 					userId: 3,
 					imageId: 3,
-					comment:
+					content:
 						"Need to have my camera at all times just in case I stumble across something like this",
 				},
-				{ userId: 3, imageId: 3, comment: "I've seen better hahaha" },
-				{ userId: 2, imageId: 3, comment: "DUDE" },
-				{ userId: 1, imageId: 4, comment: "Beautiful!" },
-				{ userId: 2, imageId: 4, comment: "This is amazing" },
+				{ userId: 3, imageId: 3, content: "I've seen better hahaha" },
+				{ userId: 2, imageId: 3, content: "DUDE" },
+				{ userId: 1, imageId: 4, content: "Beautiful!" },
+				{ userId: 2, imageId: 4, content: "This is amazing" },
 				{
 					userId: 3,
 					imageId: 4,
-					comment:
+					content:
 						"Need to have my camera at all times just in case I stumble across something like this",
 				},
-				{ userId: 3, imageId: 4, comment: "I've seen better hahaha" },
-				{ userId: 2, imageId: 4, comment: "DUDE" },
-				{ userId: 1, imageId: 5, comment: "Beautiful!" },
-				{ userId: 2, imageId: 5, comment: "This is amazing" },
+				{ userId: 3, imageId: 4, content: "I've seen better hahaha" },
+				{ userId: 2, imageId: 4, content: "DUDE" },
+				{ userId: 1, imageId: 5, content: "Beautiful!" },
+				{ userId: 2, imageId: 5, content: "This is amazing" },
 				{
 					userId: 3,
 					imageId: 5,
-					comment:
+					content:
 						"Need to have my camera at all times just in case I stumble across something like this",
 				},
-				{ userId: 3, imageId: 5, comment: "I've seen better hahaha" },
-				{ userId: 2, imageId: 5, comment: "DUDE" },
-				{ userId: 1, imageId: 6, comment: "Beautiful!" },
-				{ userId: 2, imageId: 6, comment: "This is amazing" },
+				{ userId: 3, imageId: 5, content: "I've seen better hahaha" },
+				{ userId: 2, imageId: 5, content: "DUDE" },
+				{ userId: 1, imageId: 6, content: "Beautiful!" },
+				{ userId: 2, imageId: 6, content: "This is amazing" },
 				{
 					userId: 3,
 					imageId: 6,
-					comment:
+					content:
 						"Need to have my camera at all times just in case I stumble across something like this",
 				},
-				{ userId: 3, imageId: 6, comment: "I've seen better hahaha" },
-				{ userId: 2, imageId: 6, comment: "DUDE" },
-				{ userId: 1, imageId: 7, comment: "Beautiful!" },
-				{ userId: 2, imageId: 7, comment: "This is amazing" },
+				{ userId: 3, imageId: 6, content: "I've seen better hahaha" },
+				{ userId: 2, imageId: 6, content: "DUDE" },
+				{ userId: 1, imageId: 7, content: "Beautiful!" },
+				{ userId: 2, imageId: 7, content: "This is amazing" },
 				{
 					userId: 3,
 					imageId: 7,
-					comment:
+					content:
 						"Need to have my camera at all times just in case I stumble across something like this",
 				},
-				{ userId: 3, imageId: 7, comment: "I've seen better hahaha" },
-				{ userId: 2, imageId: 7, comment: "DUDE" },
-				{ userId: 1, imageId: 8, comment: "Beautiful!" },
-				{ userId: 2, imageId: 8, comment: "This is amazing" },
+				{ userId: 3, imageId: 7, content: "I've seen better hahaha" },
+				{ userId: 2, imageId: 7, content: "DUDE" },
+				{ userId: 1, imageId: 8, content: "Beautiful!" },
+				{ userId: 2, imageId: 8, content: "This is amazing" },
 				{
 					userId: 3,
 					imageId: 8,
-					comment:
+					content:
 						"Need to have my camera at all times just in case I stumble across something like this",
 				},
-				{ userId: 3, imageId: 8, comment: "I've seen better hahaha" },
-				{ userId: 2, imageId: 8, comment: "DUDE" },
-				{ userId: 1, imageId: 9, comment: "Beautiful!" },
-				{ userId: 2, imageId: 9, comment: "This is amazing" },
+				{ userId: 3, imageId: 8, content: "I've seen better hahaha" },
+				{ userId: 2, imageId: 8, content: "DUDE" },
+				{ userId: 1, imageId: 9, content: "Beautiful!" },
+				{ userId: 2, imageId: 9, content: "This is amazing" },
 				{
 					userId: 3,
 					imageId: 9,
-					comment:
+					content:
 						"Need to have my camera at all times just in case I stumble across something like this",
 				},
-				{ userId: 3, imageId: 9, comment: "I've seen better hahaha" },
-				{ userId: 2, imageId: 9, comment: "DUDE" },
-				{ userId: 1, imageId: 10, comment: "Beautiful!" },
-				{ userId: 2, imageId: 10, comment: "This is amazing" },
+				{ userId: 3, imageId: 9, content: "I've seen better hahaha" },
+				{ userId: 2, imageId: 9, content: "DUDE" },
+				{ userId: 1, imageId: 10, content: "Beautiful!" },
+				{ userId: 2, imageId: 10, content: "This is amazing" },
 				{
 					userId: 3,
 					imageId: 10,
-					comment:
+					content:
 						"Need to have my camera at all times just in case I stumble across something like this",
 				},
-				{ userId: 3, imageId: 10, comment: "I've seen better hahaha" },
-				{ userId: 2, imageId: 10, comment: "DUDE" },
-				{ userId: 1, imageId: 11, comment: "Beautiful!" },
-				{ userId: 2, imageId: 11, comment: "This is amazing" },
+				{ userId: 3, imageId: 10, content: "I've seen better hahaha" },
+				{ userId: 2, imageId: 10, content: "DUDE" },
+				{ userId: 1, imageId: 11, content: "Beautiful!" },
+				{ userId: 2, imageId: 11, content: "This is amazing" },
 				{
 					userId: 3,
 					imageId: 11,
-					comment:
+					content:
 						"Need to have my camera at all times just in case I stumble across something like this",
 				},
-				{ userId: 3, imageId: 11, comment: "I've seen better hahaha" },
-				{ userId: 2, imageId: 11, comment: "DUDE" },
-				{ userId: 1, imageId: 12, comment: "Beautiful!" },
-				{ userId: 2, imageId: 12, comment: "This is amazing" },
+				{ userId: 3, imageId: 11, content: "I've seen better hahaha" },
+				{ userId: 2, imageId: 11, content: "DUDE" },
+				{ userId: 1, imageId: 12, content: "Beautiful!" },
+				{ userId: 2, imageId: 12, content: "This is amazing" },
 				{
 					userId: 3,
 					imageId: 12,
-					comment:
+					content:
 						"Need to have my camera at all times just in case I stumble across something like this",
 				},
-				{ userId: 3, imageId: 12, comment: "I've seen better hahaha" },
-				{ userId: 2, imageId: 12, comment: "DUDE" },
-				{ userId: 1, imageId: 13, comment: "Beautiful!" },
-				{ userId: 2, imageId: 13, comment: "This is amazing" },
+				{ userId: 3, imageId: 12, content: "I've seen better hahaha" },
+				{ userId: 2, imageId: 12, content: "DUDE" },
+				{ userId: 1, imageId: 13, content: "Beautiful!" },
+				{ userId: 2, imageId: 13, content: "This is amazing" },
 				{
 					userId: 3,
 					imageId: 13,
-					comment:
+					content:
 						"Need to have my camera at all times just in case I stumble across something like this",
 				},
-				{ userId: 3, imageId: 13, comment: "I've seen better hahaha" },
-				{ userId: 2, imageId: 13, comment: "DUDE" },
-				{ userId: 1, imageId: 14, comment: "Beautiful!" },
-				{ userId: 2, imageId: 14, comment: "This is amazing" },
+				{ userId: 3, imageId: 13, content: "I've seen better hahaha" },
+				{ userId: 2, imageId: 13, content: "DUDE" },
+				{ userId: 1, imageId: 14, content: "Beautiful!" },
+				{ userId: 2, imageId: 14, content: "This is amazing" },
 				{
 					userId: 3,
 					imageId: 14,
-					comment:
+					content:
 						"Need to have my camera at all times just in case I stumble across something like this",
 				},
-				{ userId: 3, imageId: 14, comment: "I've seen better hahaha" },
-				{ userId: 2, imageId: 14, comment: "DUDE" },
-				{ userId: 1, imageId: 15, comment: "Beautiful!" },
-				{ userId: 2, imageId: 15, comment: "This is amazing" },
+				{ userId: 3, imageId: 14, content: "I've seen better hahaha" },
+				{ userId: 2, imageId: 14, content: "DUDE" },
+				{ userId: 1, imageId: 15, content: "Beautiful!" },
+				{ userId: 2, imageId: 15, content: "This is amazing" },
 				{
 					userId: 3,
 					imageId: 15,
-					comment:
+					content:
 						"Need to have my camera at all times just in case I stumble across something like this",
 				},
-				{ userId: 3, imageId: 15, comment: "I've seen better hahaha" },
-				{ userId: 2, imageId: 15, comment: "DUDE" },
-				{ userId: 1, imageId: 16, comment: "Beautiful!" },
-				{ userId: 2, imageId: 16, comment: "This is amazing" },
+				{ userId: 3, imageId: 15, content: "I've seen better hahaha" },
+				{ userId: 2, imageId: 15, content: "DUDE" },
+				{ userId: 1, imageId: 16, content: "Beautiful!" },
+				{ userId: 2, imageId: 16, content: "This is amazing" },
 				{
 					userId: 3,
 					imageId: 16,
-					comment:
+					content:
 						"Need to have my camera at all times just in case I stumble across something like this",
 				},
-				{ userId: 3, imageId: 16, comment: "I've seen better hahaha" },
-				{ userId: 2, imageId: 16, comment: "DUDE" },
-				{ userId: 1, imageId: 17, comment: "Beautiful!" },
-				{ userId: 2, imageId: 17, comment: "This is amazing" },
+				{ userId: 3, imageId: 16, content: "I've seen better hahaha" },
+				{ userId: 2, imageId: 16, content: "DUDE" },
+				{ userId: 1, imageId: 17, content: "Beautiful!" },
+				{ userId: 2, imageId: 17, content: "This is amazing" },
 				{
 					userId: 3,
 					imageId: 17,
-					comment:
+					content:
 						"Need to have my camera at all times just in case I stumble across something like this",
 				},
-				{ userId: 3, imageId: 17, comment: "I've seen better hahaha" },
-				{ userId: 2, imageId: 17, comment: "DUDE" },
-				{ userId: 1, imageId: 18, comment: "Beautiful!" },
-				{ userId: 2, imageId: 18, comment: "This is amazing" },
+				{ userId: 3, imageId: 17, content: "I've seen better hahaha" },
+				{ userId: 2, imageId: 17, content: "DUDE" },
+				{ userId: 1, imageId: 18, content: "Beautiful!" },
+				{ userId: 2, imageId: 18, content: "This is amazing" },
 				{
 					userId: 3,
 					imageId: 18,
-					comment:
+					content:
 						"Need to have my camera at all times just in case I stumble across something like this",
 				},
-				{ userId: 3, imageId: 18, comment: "I've seen better hahaha" },
-				{ userId: 2, imageId: 18, comment: "DUDE" },
-				{ userId: 1, imageId: 19, comment: "Beautiful!" },
-				{ userId: 2, imageId: 19, comment: "This is amazing" },
+				{ userId: 3, imageId: 18, content: "I've seen better hahaha" },
+				{ userId: 2, imageId: 18, content: "DUDE" },
+				{ userId: 1, imageId: 19, content: "Beautiful!" },
+				{ userId: 2, imageId: 19, content: "This is amazing" },
 				{
 					userId: 3,
 					imageId: 19,
-					comment:
+					content:
 						"Need to have my camera at all times just in case I stumble across something like this",
 				},
-				{ userId: 3, imageId: 19, comment: "I've seen better hahaha" },
-				{ userId: 2, imageId: 19, comment: "DUDE" },
-				{ userId: 1, imageId: 20, comment: "Beautiful!" },
-				{ userId: 2, imageId: 20, comment: "This is amazing" },
+				{ userId: 3, imageId: 19, content: "I've seen better hahaha" },
+				{ userId: 2, imageId: 19, content: "DUDE" },
+				{ userId: 1, imageId: 20, content: "Beautiful!" },
+				{ userId: 2, imageId: 20, content: "This is amazing" },
 				{
 					userId: 3,
 					imageId: 20,
-					comment:
+					content:
 						"Need to have my camera at all times just in case I stumble across something like this",
 				},
-				{ userId: 3, imageId: 20, comment: "I've seen better hahaha" },
-				{ userId: 2, imageId: 20, comment: "DUDE" },
-				{ userId: 1, imageId: 21, comment: "Beautiful!" },
-				{ userId: 2, imageId: 21, comment: "This is amazing" },
+				{ userId: 3, imageId: 20, content: "I've seen better hahaha" },
+				{ userId: 2, imageId: 20, content: "DUDE" },
+				{ userId: 1, imageId: 21, content: "Beautiful!" },
+				{ userId: 2, imageId: 21, content: "This is amazing" },
 				{
 					userId: 3,
 					imageId: 21,
-					comment:
+					content:
 						"Need to have my camera at all times just in case I stumble across something like this",
 				},
-				{ userId: 3, imageId: 21, comment: "I've seen better hahaha" },
-				{ userId: 2, imageId: 21, comment: "DUDE" },
-				{ userId: 1, imageId: 22, comment: "Beautiful!" },
-				{ userId: 2, imageId: 22, comment: "This is amazing" },
+				{ userId: 3, imageId: 21, content: "I've seen better hahaha" },
+				{ userId: 2, imageId: 21, content: "DUDE" },
+				{ userId: 1, imageId: 22, content: "Beautiful!" },
+				{ userId: 2, imageId: 22, content: "This is amazing" },
 				{
 					userId: 3,
 					imageId: 22,
-					comment:
+					content:
 						"Need to have my camera at all times just in case I stumble across something like this",
 				},
-				{ userId: 3, imageId: 22, comment: "I've seen better hahaha" },
-				{ userId: 2, imageId: 22, comment: "DUDE" },
-				{ userId: 1, imageId: 23, comment: "Beautiful!" },
-				{ userId: 2, imageId: 23, comment: "This is amazing" },
+				{ userId: 3, imageId: 22, content: "I've seen better hahaha" },
+				{ userId: 2, imageId: 22, content: "DUDE" },
+				{ userId: 1, imageId: 23, content: "Beautiful!" },
+				{ userId: 2, imageId: 23, content: "This is amazing" },
 				{
 					userId: 3,
 					imageId: 23,
-					comment:
+					content:
 						"Need to have my camera at all times just in case I stumble across something like this",
 				},
-				{ userId: 3, imageId: 23, comment: "I've seen better hahaha" },
-				{ userId: 2, imageId: 23, comment: "DUDE" },
+				{ userId: 3, imageId: 23, content: "I've seen better hahaha" },
+				{ userId: 2, imageId: 23, content: "DUDE" },
 			],
 			{}
 		);
@@ -257,7 +257,7 @@ module.exports = {
 		return queryInterface.bulkDelete(
 			"Comments",
 			// {
-			// 	comment: {
+			// 	content: {
 			// 		[Op.in]: [
 			// 			"Beautiful!",
 			// 			"This is amazing",
