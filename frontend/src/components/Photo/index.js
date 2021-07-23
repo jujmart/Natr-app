@@ -5,6 +5,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { Modal } from "../../context/Modal";
 import {
 	addCommentThunk,
+	deleteCommentThunk,
 	setCommentsThunk,
 	unsetComments,
 } from "../../store/comments";
@@ -25,7 +26,11 @@ export default function Photo() {
 	const { photoId } = useParams();
 	const [currentPhoto, setCurrentPhoto] = useState({});
 	const [newComment, setNewComment] = useState("");
-	const [backendDeleteErrors, setBackendDeleteErrors] = useState([]);
+	const [backendImageDeleteErrors, setBackendImageDeleteErrors] = useState(
+		[]
+	);
+	// const [backendCommentDeleteErrors, setBackendCommentDeleteErrors] =
+	// 	useState([]);
 	const [backendCommentErrors, setBackendCommentErrors] = useState([]);
 	const history = useHistory();
 
@@ -45,6 +50,14 @@ export default function Photo() {
 			setBackendCommentErrors(res.errors);
 		} else {
 			setNewComment("");
+		}
+	}
+
+	async function handleDeleteComment(commentId) {
+		const res = await dispatch(deleteCommentThunk(commentId));
+		if (res) {
+			console.log(res.errors);
+			// 	setBackendCommentDeleteErrors(res.errors);
 		}
 	}
 
@@ -100,16 +113,16 @@ export default function Photo() {
 								<DeleteConfirm
 									photoId={photoId}
 									setBackendDeleteErrors={
-										setBackendDeleteErrors
+										setBackendImageDeleteErrors
 									}
 								/>
 							</Modal>
 						) : null}
 					</div>
-					{backendDeleteErrors.length ? (
+					{backendImageDeleteErrors.length ? (
 						<div>
 							<ul className="individual-photo-delete-errors">
-								{backendDeleteErrors.map((error) => (
+								{backendImageDeleteErrors.map((error) => (
 									<li key={error}>{error}</li>
 								))}
 							</ul>
@@ -164,7 +177,15 @@ export default function Photo() {
 											<button className="individual-photo-individual-comment-edit-button">
 												Edit
 											</button>
-											<button className="individual-photo-individual-comment-delete-button">
+											<button
+												className="individual-photo-individual-comment-delete-button"
+												onClick={(e) =>
+													handleDeleteComment(
+														e.target.value
+													)
+												}
+												value={comment.id}
+											>
 												Delete
 											</button>
 										</div>
