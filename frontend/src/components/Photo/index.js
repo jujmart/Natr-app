@@ -6,6 +6,7 @@ import { Modal } from "../../context/Modal";
 import {
 	addCommentThunk,
 	deleteCommentThunk,
+	editCommentThunk,
 	setCommentsThunk,
 	unsetComments,
 } from "../../store/comments";
@@ -26,12 +27,17 @@ export default function Photo() {
 	const { photoId } = useParams();
 	const [currentPhoto, setCurrentPhoto] = useState({});
 	const [newComment, setNewComment] = useState("");
+	const [editId, setEditId] = useState(0);
+	const [editedComment, setEditedComment] = useState("");
 	const [backendImageDeleteErrors, setBackendImageDeleteErrors] = useState(
 		[]
 	);
 	// const [backendCommentDeleteErrors, setBackendCommentDeleteErrors] =
 	// 	useState([]);
 	const [backendCommentErrors, setBackendCommentErrors] = useState([]);
+	const [backendCommentEditErrors, setBackendCommentEditErrors] = useState(
+		[]
+	);
 	const history = useHistory();
 
 	window.onbeforeunload = function (e) {
@@ -58,6 +64,15 @@ export default function Photo() {
 		if (res) {
 			console.log(res.errors);
 			// 	setBackendCommentDeleteErrors(res.errors);
+		}
+	}
+
+	async function handleEditComment(commentId) {
+		const res = await dispatch(
+			editCommentThunk({ id: commentId, content: editedComment })
+		);
+		if (res) {
+			setBackendCommentEditErrors(res.errors);
 		}
 	}
 
@@ -167,30 +182,61 @@ export default function Photo() {
 										{comment.updatedAt}
 									</div>
 								</div>
-								<div className="individual-photo-individual-comment-content-and-edit-and-delete-buttons">
-									<div className="individual-photo-individual-comment-content">
-										{comment.content}
-									</div>
-									{comment.userId === sessionUser?.id ||
-									sessionUser?.username === "Demo-lition" ? (
-										<div className="individual-photo-individual-comment-edit-and-delete-buttons">
-											<button className="individual-photo-individual-comment-edit-button">
-												Edit
-											</button>
-											<button
-												className="individual-photo-individual-comment-delete-button"
-												onClick={(e) =>
-													handleDeleteComment(
-														e.target.value
-													)
-												}
-												value={comment.id}
-											>
-												Delete
-											</button>
+								{+editId !== comment.id ? (
+									<div className="individual-photo-individual-comment-content-and-edit-and-delete-buttons">
+										<div className="individual-photo-individual-comment-content">
+											{comment.content}
 										</div>
-									) : null}
-								</div>
+										{comment.userId === sessionUser?.id ||
+										sessionUser?.username ===
+											"Demo-lition" ? (
+											<div className="individual-photo-individual-comment-edit-and-delete-buttons">
+												<button
+													className="individual-photo-individual-comment-edit-button"
+													onClick={(e) => {
+														setEditId(
+															e.target.value
+														);
+														setEditedComment(
+															comment.content
+														);
+													}}
+													value={comment.id}
+												>
+													Edit
+												</button>
+												<button
+													className="individual-photo-individual-comment-delete-button"
+													onClick={(e) =>
+														handleDeleteComment(
+															e.target.value
+														)
+													}
+													value={comment.id}
+												>
+													Delete
+												</button>
+											</div>
+										) : null}
+									</div>
+								) : (
+									<div>
+										<textarea
+											value={editedComment}
+											onChange={(e) =>
+												setEditedComment(e.target.value)
+											}
+										/>
+										<button
+											onClick={() =>
+												handleEditComment(comment.id)
+											}
+											className="individual-photo-individual-comment-add-comment-button"
+										>
+											Done
+										</button>
+									</div>
+								)}
 							</div>
 						</div>
 					))}
