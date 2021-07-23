@@ -177,6 +177,7 @@
 
 .individual-photo-individual-comment-content {
 	margin: 2px 0px;
+	margin-right: 10px;
 }
 
 .individual-photo-individual-comment-updated-date {
@@ -255,4 +256,32 @@
 
 .individual-photo-individual-comment-edit-and-delete-buttons {
 	display: flex;
+}
+
+.individual-photo-individual-comment-edit-comment-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.individual-photo-individual-comment-edit-comment-button {
+	padding: 6px 11px;
+	align-self: flex-start;
+	font-size: 14px;
+	color: white;
+	background-color: #006dac;
+	border-radius: 4px;
+	border-style: unset;
+	margin-top: 8px;
+}
+
+.individual-photo-individual-comment-edit-comment-content {
+	font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+	font-size: 15px;
+}
+.individual-photo-individual-comment-edit-comment-button:hover {
+	background-color: #015686;
+}
+
+.profile-photo-top-position {
+	align-self: flex-start;
 }

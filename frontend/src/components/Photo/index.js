@@ -35,9 +35,9 @@ export default function Photo() {
 	// const [backendCommentDeleteErrors, setBackendCommentDeleteErrors] =
 	// 	useState([]);
 	const [backendCommentErrors, setBackendCommentErrors] = useState([]);
-	const [backendCommentEditErrors, setBackendCommentEditErrors] = useState(
-		[]
-	);
+	// const [backendCommentEditErrors, setBackendCommentEditErrors] = useState(
+	// 	[]
+	// );
 	const history = useHistory();
 
 	window.onbeforeunload = function (e) {
@@ -72,7 +72,9 @@ export default function Photo() {
 			editCommentThunk({ id: commentId, content: editedComment })
 		);
 		if (res) {
-			setBackendCommentEditErrors(res.errors);
+			// setBackendCommentEditErrors(res.errors);
+		} else {
+			setEditId(0);
 		}
 	}
 
@@ -171,7 +173,11 @@ export default function Photo() {
 							<img
 								src={comment.User?.profilePhotoUrl}
 								alt="Profile Pic"
-								className="individual-photo-individual-comment-user-photo"
+								className={`individual-photo-individual-comment-user-photo ${
+									+editId === comment.id
+										? "profile-photo-top-position"
+										: null
+								}`}
 							/>
 							<div>
 								<div className="individual-photo-individual-comment-username-and-updated-date">
@@ -220,8 +226,9 @@ export default function Photo() {
 										) : null}
 									</div>
 								) : (
-									<div>
+									<div className="individual-photo-individual-comment-edit-comment-container">
 										<textarea
+											className="individual-photo-individual-comment-edit-comment-content"
 											value={editedComment}
 											onChange={(e) =>
 												setEditedComment(e.target.value)
@@ -231,7 +238,7 @@ export default function Photo() {
 											onClick={() =>
 												handleEditComment(comment.id)
 											}
-											className="individual-photo-individual-comment-add-comment-button"
+											className="individual-photo-individual-comment-edit-comment-button"
 										>
 											Done
 										</button>
