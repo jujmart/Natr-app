@@ -73,6 +73,8 @@ export default function Photo() {
 		);
 		if (res) {
 			setBackendCommentEditErrors(res.errors);
+		} else {
+			setEditId(0);
 		}
 	}
 

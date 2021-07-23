@@ -60,4 +60,18 @@ router.delete(
 	})
 );
 
+router.put(
+	"/:id",
+	asyncHandler(async (req, res) => {
+		const { id } = req.params;
+		const { content } = req.body;
+		const editedComment = await Comment.findByPk(id, {
+			include: User.scope("postUser"),
+		});
+		editedComment.content = content;
+		await editedComment.save();
+		res.json({ comment: editedComment });
+	})
+);
+
 module.exports = router;
