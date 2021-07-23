@@ -3,7 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 
 import { Modal } from "../../context/Modal";
-import { addCommentThunk, setCommentsThunk } from "../../store/comments";
+import {
+	addCommentThunk,
+	setCommentsThunk,
+	unsetComments,
+} from "../../store/comments";
 import { setPhotoUserThunk } from "../../store/individualPhoto";
 import { setClose, setShowDeleteConfirm } from "../../store/modal";
 import { setPhotosThunk } from "../../store/photos";
@@ -24,6 +28,10 @@ export default function Photo() {
 	const [backendDeleteErrors, setBackendDeleteErrors] = useState([]);
 	const [backendCommentErrors, setBackendCommentErrors] = useState([]);
 	const history = useHistory();
+
+	window.onbeforeunload = function (e) {
+		dispatch(unsetComments());
+	};
 
 	async function handleAddComment() {
 		const res = await dispatch(
@@ -146,38 +154,50 @@ export default function Photo() {
 										{comment.updatedAt}
 									</div>
 								</div>
-								<div className="individual-photo-individual-comment-content">
-									{comment.content}
+								<div className="individual-photo-individual-comment-content-and-edit-and-delete-buttons">
+									<div className="individual-photo-individual-comment-content">
+										{comment.content}
+									</div>
+									<div className="individual-photo-individual-comment-edit-and-delete-buttons">
+										<button className="individual-photo-individual-comment-edit-button">
+											Edit
+										</button>
+										<button className="individual-photo-individual-comment-delete-button">
+											Delete
+										</button>
+									</div>
 								</div>
 							</div>
 						</div>
 					))}
 				</div>
-				<div className="individual-photo-individual-comment-add-comment-container">
-					{backendCommentErrors.length ? (
-						<div>
-							<ul className="individual-photo-comment-errors">
-								{backendCommentErrors.map((error) => (
-									<li key={error}>{error}</li>
-								))}
-							</ul>
-						</div>
-					) : null}
-					<textarea
-						value={newComment}
-						onChange={(e) => setNewComment(e.target.value)}
-						className="individual-photo-individual-comment-add-comment"
-						placeholder="Add a comment"
-					/>
-					{newComment ? (
-						<button
-							className="individual-photo-individual-comment-add-comment-button"
-							onClick={handleAddComment}
-						>
-							Comment
-						</button>
-					) : null}
-				</div>
+				{sessionUser ? (
+					<div className="individual-photo-individual-comment-add-comment-container">
+						{backendCommentErrors.length ? (
+							<div>
+								<ul className="individual-photo-comment-errors">
+									{backendCommentErrors.map((error) => (
+										<li key={error}>{error}</li>
+									))}
+								</ul>
+							</div>
+						) : null}
+						<textarea
+							value={newComment}
+							onChange={(e) => setNewComment(e.target.value)}
+							className="individual-photo-individual-comment-add-comment"
+							placeholder="Add a comment"
+						/>
+						{newComment ? (
+							<button
+								className="individual-photo-individual-comment-add-comment-button"
+								onClick={handleAddComment}
+							>
+								Comment
+							</button>
+						) : null}
+					</div>
+				) : null}
 			</div>
 		</div>
 	);
