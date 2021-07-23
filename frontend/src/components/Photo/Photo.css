@@ -160,6 +160,7 @@
 
 .individual-photo-individual-comment-username-and-updated-date {
 	display: flex;
+	align-items: center;
 }
 
 .individual-photo-comments-container {
@@ -171,14 +172,16 @@
 	color: #006dac;
 	font-weight: 500;
 	padding-right: 15px;
+	text-align: center;
 }
 
 .individual-photo-individual-comment-content {
-	padding-top: 3px;
+	margin: 2px 0px;
 }
 
 .individual-photo-individual-comment-updated-date {
 	color: rgb(146, 145, 145);
+	text-align: center;
 }
 
 .individual-photo-individual-comment-add-comment {
@@ -212,4 +215,40 @@
 
 .individual-photo-comment-errors {
 	color: red;
+}
+
+.individual-photo-individual-comment-content-and-edit-and-delete-buttons {
+	padding-top: 3px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.individual-photo-individual-comment-edit-button {
+	padding: 3px 7px;
+	margin: 0px 4px;
+	align-self: center;
+	font-size: 14px;
+	color: white;
+	background-color: orange;
+	border-radius: 4px;
+	border-style: unset;
+}
+
+.individual-photo-individual-comment-edit-button:hover {
+	background-color: rgb(201, 131, 3);
+}
+
+.individual-photo-individual-comment-delete-button {
+	padding: 3px 7px;
+	margin: 0px 4px;
+	align-self: center;
+	font-size: 14px;
+	color: white;
+	background-color: red;
+	border-radius: 4px;
+	border-style: unset;
+}
+.individual-photo-individual-comment-delete-button:hover {
+	background-color: rgb(197, 4, 4);
 }

@@ -154,8 +154,18 @@ export default function Photo() {
 										{comment.updatedAt}
 									</div>
 								</div>
-								<div className="individual-photo-individual-comment-content">
-									{comment.content}
+								<div className="individual-photo-individual-comment-content-and-edit-and-delete-buttons">
+									<div className="individual-photo-individual-comment-content">
+										{comment.content}
+									</div>
+									<div className="individual-photo-individual-comment-edit-and-delete-buttons">
+										<button className="individual-photo-individual-comment-edit-button">
+											Edit
+										</button>
+										<button className="individual-photo-individual-comment-delete-button">
+											Delete
+										</button>
+									</div>
 								</div>
 							</div>
 						</div>
