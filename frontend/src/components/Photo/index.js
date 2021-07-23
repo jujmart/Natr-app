@@ -3,7 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 
 import { Modal } from "../../context/Modal";
-import { addCommentThunk, setCommentsThunk } from "../../store/comments";
+import {
+	addCommentThunk,
+	setCommentsThunk,
+	unsetComments,
+} from "../../store/comments";
 import { setPhotoUserThunk } from "../../store/individualPhoto";
 import { setClose, setShowDeleteConfirm } from "../../store/modal";
 import { setPhotosThunk } from "../../store/photos";
@@ -24,6 +28,10 @@ export default function Photo() {
 	const [backendDeleteErrors, setBackendDeleteErrors] = useState([]);
 	const [backendCommentErrors, setBackendCommentErrors] = useState([]);
 	const history = useHistory();
+
+	window.onbeforeunload = function (e) {
+		dispatch(unsetComments());
+	};
 
 	async function handleAddComment() {
 		const res = await dispatch(

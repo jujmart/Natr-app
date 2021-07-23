@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const SET_COMMENTS = "/comments/SET_COMMENTS";
 const ADD_COMMENT = "/comments/ADD_COMMENT";
+const UNSET_COMMENTS = "/comments/UNSET_COMMENTS";
 
 function setComments(comments) {
 	return { type: SET_COMMENTS, comments };
@@ -9,6 +10,10 @@ function setComments(comments) {
 
 function addComment(comment) {
 	return { type: ADD_COMMENT, comment };
+}
+
+export function unsetComments() {
+	return { type: UNSET_COMMENTS };
 }
 
 export function setCommentsThunk(imageId) {
@@ -50,6 +55,8 @@ export default function commentsReducer(state = [], action) {
 			return action.comments;
 		case ADD_COMMENT:
 			return [...state, action.comment];
+		case UNSET_COMMENTS:
+			return [];
 		default:
 			return state;
 	}
