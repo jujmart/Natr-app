@@ -76,7 +76,7 @@ export default function commentsReducer(state = [], action) {
 		case UNSET_COMMENTS:
 			return [];
 		case DELETE_COMMENT:
-			return state.filter((comment) => comment.id !== action.id);
+			return state.filter((comment) => comment.id !== +action.id);
 		default:
 			return state;
 	}
