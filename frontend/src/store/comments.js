@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 const SET_COMMENTS = "/comments/SET_COMMENTS";
 const ADD_COMMENT = "/comments/ADD_COMMENT";
 const UNSET_COMMENTS = "/comments/UNSET_COMMENTS";
+const DELETE_COMMENT = "/comments/DELETE_COMMENT";
 
 function setComments(comments) {
 	return { type: SET_COMMENTS, comments };
@@ -14,6 +15,10 @@ function addComment(comment) {
 
 export function unsetComments() {
 	return { type: UNSET_COMMENTS };
+}
+
+function deleteComment(id) {
+	return { type: DELETE_COMMENT, id };
 }
 
 export function setCommentsThunk(imageId) {
@@ -48,6 +53,19 @@ export function addCommentThunk(comment) {
 	};
 }
 
+export function deleteCommentThunk(id) {
+	return async function (dispatch) {
+		try {
+			await csrfFetch(`/api/comments/${id}`, {
+				method: "DELETE",
+			});
+			dispatch(deleteComment(id));
+		} catch (err) {
+			return err.json();
+		}
+	};
+}
+
 export default function commentsReducer(state = [], action) {
 	Object.freeze(state);
 	switch (action.type) {
@@ -57,6 +75,8 @@ export default function commentsReducer(state = [], action) {
 			return [...state, action.comment];
 		case UNSET_COMMENTS:
 			return [];
+		case DELETE_COMMENT:
+			return state.filter((comment) => comment.id !== +action.id);
 		default:
 			return state;
 	}
