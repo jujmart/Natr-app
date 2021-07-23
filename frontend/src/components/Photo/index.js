@@ -153,31 +153,33 @@ export default function Photo() {
 						</div>
 					))}
 				</div>
-				<div className="individual-photo-individual-comment-add-comment-container">
-					{backendCommentErrors.length ? (
-						<div>
-							<ul className="individual-photo-comment-errors">
-								{backendCommentErrors.map((error) => (
-									<li key={error}>{error}</li>
-								))}
-							</ul>
-						</div>
-					) : null}
-					<textarea
-						value={newComment}
-						onChange={(e) => setNewComment(e.target.value)}
-						className="individual-photo-individual-comment-add-comment"
-						placeholder="Add a comment"
-					/>
-					{newComment ? (
-						<button
-							className="individual-photo-individual-comment-add-comment-button"
-							onClick={handleAddComment}
-						>
-							Comment
-						</button>
-					) : null}
-				</div>
+				{sessionUser ? (
+					<div className="individual-photo-individual-comment-add-comment-container">
+						{backendCommentErrors.length ? (
+							<div>
+								<ul className="individual-photo-comment-errors">
+									{backendCommentErrors.map((error) => (
+										<li key={error}>{error}</li>
+									))}
+								</ul>
+							</div>
+						) : null}
+						<textarea
+							value={newComment}
+							onChange={(e) => setNewComment(e.target.value)}
+							className="individual-photo-individual-comment-add-comment"
+							placeholder="Add a comment"
+						/>
+						{newComment ? (
+							<button
+								className="individual-photo-individual-comment-add-comment-button"
+								onClick={handleAddComment}
+							>
+								Comment
+							</button>
+						) : null}
+					</div>
+				) : null}
 			</div>
 		</div>
 	);

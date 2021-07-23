@@ -42,7 +42,8 @@ router.post(
 	validateComment,
 	asyncHandler(async (req, res) => {
 		const comment = req.body;
-		const newComment = await Comment.create(comment, {
+		const incompleteNewComment = await Comment.create(comment);
+		const newComment = await Comment.findByPk(incompleteNewComment.id, {
 			include: User.scope("postUser"),
 		});
 		res.json({ newComment });
