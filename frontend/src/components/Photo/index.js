@@ -118,14 +118,20 @@ export default function Photo() {
 							<img
 								src={comment.User.profilePhotoUrl}
 								alt="Profile Pic"
-								className="individual-photo-comment-user-photo"
+								className="individual-photo-individual-comment-user-photo"
 							/>
 							<div>
-								<div>
-									<div>{comment.User.username}</div>
-									<div>{comment.updatedAt}</div>
+								<div className="individual-photo-individual-comment-username-and-updated-date">
+									<div className="individual-photo-individual-comment-username">
+										{comment.User.username}
+									</div>
+									<div className="individual-photo-individual-comment-updated-date">
+										{comment.updatedAt}
+									</div>
 								</div>
-								<div>{comment.content}</div>
+								<div className="individual-photo-individual-comment-content">
+									{comment.content}
+								</div>
 							</div>
 						</div>
 					))}

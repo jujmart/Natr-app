@@ -13,8 +13,8 @@ router.patch(
 		const comments = await Comment.findAll({
 			where: { imageId },
 			order: [
-				["createdAt", "DESC"],
-				["id", "DESC"],
+				["createdAt", "ASC"],
+				["id", "ASC"],
 			],
 			include: User.scope("postUser"),
 		});

@@ -27,7 +27,7 @@
 .individual-photo-content {
 	width: 87%;
 	text-align: center;
-	margin-bottom: 10px;
+	margin-bottom: 25px;
 	font-size: 16px;
 	font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
@@ -143,12 +143,40 @@
 	background-color: rgb(197, 4, 4);
 }
 
-.individual-photo-comment-user-photo {
-	height: 30px;
-	width: 30px;
+.individual-photo-individual-comment-user-photo {
+	height: 35px;
+	width: 35px;
 	border-radius: 50%;
+	padding: 5px;
+	padding-right: 10px;
 }
 
 .individual-photo-individual-comment-container {
 	display: flex;
+	font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+	padding: 7px;
+	align-items: center;
+}
+
+.individual-photo-individual-comment-username-and-updated-date {
+	display: flex;
+}
+
+.individual-photo-comments-container {
+	padding: 20px;
+	border-top: 2px solid lightgray;
+}
+
+.individual-photo-individual-comment-username {
+	color: #006dac;
+	font-weight: 500;
+	padding-right: 15px;
+}
+
+.individual-photo-individual-comment-content {
+	padding-top: 3px;
+}
+
+.individual-photo-individual-comment-updated-date {
+	color: rgb(146, 145, 145);
 }
