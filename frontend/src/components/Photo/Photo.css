@@ -256,6 +256,7 @@
 
 .individual-photo-individual-comment-edit-and-delete-buttons {
 	display: flex;
+	width: 109px;
 }
 
 .individual-photo-individual-comment-edit-comment-container {

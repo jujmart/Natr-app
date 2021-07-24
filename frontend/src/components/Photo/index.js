@@ -212,35 +212,37 @@ export default function Photo() {
 										<div className="individual-photo-individual-comment-content">
 											{comment.content}
 										</div>
-										{showButtonId === comment.id ? (
-											<div className="individual-photo-individual-comment-edit-and-delete-buttons">
-												<button
-													className="individual-photo-individual-comment-edit-button"
-													onClick={(e) => {
-														setEditId(
-															e.target.value
-														);
-														setEditedComment(
-															comment.content
-														);
-													}}
-													value={comment.id}
-												>
-													Edit
-												</button>
-												<button
-													className="individual-photo-individual-comment-delete-button"
-													onClick={(e) =>
-														handleDeleteComment(
-															e.target.value
-														)
-													}
-													value={comment.id}
-												>
-													Delete
-												</button>
-											</div>
-										) : null}
+										<div className="individual-photo-individual-comment-edit-and-delete-buttons">
+											{showButtonId === comment.id ? (
+												<>
+													<button
+														className="individual-photo-individual-comment-edit-button"
+														onClick={(e) => {
+															setEditId(
+																e.target.value
+															);
+															setEditedComment(
+																comment.content
+															);
+														}}
+														value={comment.id}
+													>
+														Edit
+													</button>
+													<button
+														className="individual-photo-individual-comment-delete-button"
+														onClick={(e) =>
+															handleDeleteComment(
+																e.target.value
+															)
+														}
+														value={comment.id}
+													>
+														Delete
+													</button>
+												</>
+											) : null}
+										</div>
 									</div>
 								) : (
 									<div className="individual-photo-individual-comment-edit-comment-container">
