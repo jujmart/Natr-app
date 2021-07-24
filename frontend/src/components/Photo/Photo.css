@@ -285,3 +285,8 @@
 .profile-photo-top-position {
 	align-self: flex-start;
 }
+
+.comment-div-color {
+	background-color: rgb(243, 241, 241);
+	border-radius: 4px;
+}

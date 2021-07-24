@@ -29,6 +29,8 @@ export default function Photo() {
 	const [newComment, setNewComment] = useState("");
 	const [editId, setEditId] = useState(0);
 	const [editedComment, setEditedComment] = useState("");
+	const [showButtonId, setShowButtonId] = useState(0);
+	const [divColorId, setDivColorId] = useState(0);
 	const [backendImageDeleteErrors, setBackendImageDeleteErrors] = useState(
 		[]
 	);
@@ -168,7 +170,24 @@ export default function Photo() {
 					{comments.map((comment) => (
 						<div
 							key={comment.id}
-							className="individual-photo-individual-comment-container"
+							className={`individual-photo-individual-comment-container ${
+								divColorId === comment.id
+									? "comment-div-color"
+									: ""
+							}`}
+							onMouseEnter={() => {
+								setDivColorId(comment.id);
+								if (
+									comment.userId === sessionUser?.id ||
+									sessionUser?.username === "Demo-lition"
+								) {
+									setShowButtonId(comment.id);
+								}
+							}}
+							onMouseLeave={() => {
+								setDivColorId(0);
+								setShowButtonId(0);
+							}}
 						>
 							<img
 								src={comment.User?.profilePhotoUrl}
@@ -176,7 +195,7 @@ export default function Photo() {
 								className={`individual-photo-individual-comment-user-photo ${
 									+editId === comment.id
 										? "profile-photo-top-position"
-										: null
+										: ""
 								}`}
 							/>
 							<div>
@@ -193,9 +212,7 @@ export default function Photo() {
 										<div className="individual-photo-individual-comment-content">
 											{comment.content}
 										</div>
-										{comment.userId === sessionUser?.id ||
-										sessionUser?.username ===
-											"Demo-lition" ? (
+										{showButtonId === comment.id ? (
 											<div className="individual-photo-individual-comment-edit-and-delete-buttons">
 												<button
 													className="individual-photo-individual-comment-edit-button"
