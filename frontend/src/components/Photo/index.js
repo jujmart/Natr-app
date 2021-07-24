@@ -79,6 +79,28 @@ export default function Photo() {
 		}
 	}
 
+	function handleUpdatedTime(comment) {
+		const t = comment.updatedAt.split(/[-T:Z]/);
+		const updatedTime = new Date(
+			Date.UTC(t[0], t[1] - 1, t[2], t[3], t[4], t[5])
+		);
+		const currentTime = new Date();
+		const difference = currentTime - updatedTime;
+
+		if (difference < 60 * 1000) {
+			return "< 1m";
+		} else if (difference < 60 * 60 * 1000) {
+			return `${Math.floor(difference / (60 * 1000))}m`;
+		} else if (difference < 24 * 60 * 60 * 1000) {
+			return `${Math.floor(difference / (60 * 60 * 1000))}h`;
+		} else if (difference < 30 * 24 * 60 * 60 * 1000) {
+			return `${Math.floor(difference / (24 * 60 * 60 * 1000))}d`;
+		} else if (difference < 12 * 30 * 24 * 60 * 60 * 1000) {
+			return `${Math.floor(difference / (30 * 24 * 60 * 60 * 1000))}mo`;
+		}
+		return `${Math.floor(difference / (12 * 30 * 24 * 60 * 60 * 1000))}y`;
+	}
+
 	useEffect(() => {
 		dispatch(setPhotosThunk());
 	}, [dispatch]);
@@ -203,7 +225,7 @@ export default function Photo() {
 										{comment.User?.username}
 									</div>
 									<div className="individual-photo-individual-comment-updated-date">
-										{comment.updatedAt}
+										{handleUpdatedTime(comment)}
 									</div>
 								</div>
 								{+editId !== comment.id ? (
