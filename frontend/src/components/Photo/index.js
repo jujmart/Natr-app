@@ -64,7 +64,6 @@ export default function Photo() {
 	async function handleDeleteComment(commentId) {
 		const res = await dispatch(deleteCommentThunk(commentId));
 		if (res) {
-			console.log(res.errors);
 			// 	setBackendCommentDeleteErrors(res.errors);
 		}
 	}
