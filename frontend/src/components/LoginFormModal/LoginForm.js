@@ -37,10 +37,11 @@ export default function LoginForm() {
 			<form className={styles["login-form"]} onSubmit={handleSubmit}>
 				<div>
 					<label>
-						Login Credential (username or email):
+						Login Credential:
 						<input
 							className={styles["login-input"]}
 							type="text"
+							placeholder="username or email"
 							value={credential}
 							onChange={(e) => setCredential(e.target.value)}
 						/>
