@@ -26,7 +26,7 @@ const validateSignup = [
 		.isLength({ max: 30 })
 		.withMessage("Please provide a username with at most 30 characters.")
 		.custom((value) => !value.includes(" "))
-		.withMessage("Please provide a one-word username (no spaces)."),
+		.withMessage("Please provide a username with no spaces."),
 	check("username")
 		.not()
 		.isEmail()
