@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { setClose, setShowSignup } from "../../store/modal";
@@ -9,6 +9,7 @@ export default function LoginForm() {
 	const [credential, setCredential] = useState("");
 	const [password, setPassword] = useState("");
 	const [backendErrors, setBackendErrors] = useState([]);
+	const [validationErrors, setValidationErrors] = useState([]);
 
 	const dispatch = useDispatch();
 
@@ -24,12 +25,22 @@ export default function LoginForm() {
 		}
 	}
 
+	useEffect(() => {
+		let errors = [];
+		if (credential.includes(" "))
+			errors.push("Login credential must NOT include a space");
+		setValidationErrors(errors);
+	}, [credential]);
+
 	return (
 		<div className={styles["login-form-div"]}>
 			<h3>Log in to Natr</h3>
 			<div>
 				<ul className={styles["login-form-errors"]}>
 					{backendErrors.map((error) => (
+						<li key={error}>{error}</li>
+					))}
+					{validationErrors.map((error) => (
 						<li key={error}>{error}</li>
 					))}
 				</ul>
