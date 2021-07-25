@@ -32,8 +32,8 @@ export default function UploadPhotoFormPage() {
 	useEffect(() => {
 		let errors = [];
 		if (imageUrl) {
-			let extension3 = imageUrl.slice(imageUrl.length - 4);
-			let extension4 = imageUrl.slice(imageUrl.length - 5);
+			const extension3 = imageUrl.slice(imageUrl.length - 4);
+			const extension4 = imageUrl.slice(imageUrl.length - 5);
 			if (
 				extension3 !== ".jpg" &&
 				extension3 !== ".png" &&
