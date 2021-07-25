@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { Redirect, useHistory, useParams } from "react-router-dom";
 
 import { Modal } from "../../context/Modal";
 import {
@@ -121,6 +121,9 @@ export default function Photo() {
 			dispatch(setCommentsThunk(currentPhoto.id));
 		}
 	}, [dispatch, currentPhoto]);
+
+	if (photos.length && !photos.find((photo) => photo.id === +photoId))
+		return <Redirect to="/photo-not-found" />;
 
 	return (
 		<div className="individual-photo-container">
