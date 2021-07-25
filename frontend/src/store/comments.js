@@ -71,12 +71,12 @@ export function deleteCommentThunk(id) {
 	};
 }
 
-export function editCommentThunk({ id, content }) {
+export function editCommentThunk({ id, content, imageId, userId, username }) {
 	return async function (dispatch) {
 		try {
 			const res = await csrfFetch(`/api/comments/${id}`, {
 				method: "PUT",
-				body: JSON.stringify({ content }),
+				body: JSON.stringify({ content, imageId, userId, username }),
 			});
 			if (res.ok) {
 				const { comment } = await res.json();

@@ -10,7 +10,7 @@ const router = express.Router();
 const validateComment = [
 	check("content")
 		.exists({ checkFalsy: true })
-		.withMessage("Please provide some comment content."),
+		.withMessage("Please make sure that your comment is not empty."),
 	check("userId")
 		.exists({ checkFalsy: true })
 		.withMessage("Please make sure you are signed in as a valid user."),
@@ -62,14 +62,17 @@ router.delete(
 
 router.put(
 	"/:id",
+	validateComment,
 	asyncHandler(async (req, res) => {
 		const { id } = req.params;
-		const { content } = req.body;
+		const { content, userId, username } = req.body;
 		const editedComment = await Comment.findByPk(id, {
 			include: User.scope("postUser"),
 		});
-		editedComment.content = content;
-		await editedComment.save();
+		if (userId === editedComment.userId || username === "Demo-lition") {
+			editedComment.content = content;
+			await editedComment.save();
+		}
 		res.json({ comment: editedComment });
 	})
 );

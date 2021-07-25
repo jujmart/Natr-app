@@ -37,9 +37,9 @@ export default function Photo() {
 	// const [backendCommentDeleteErrors, setBackendCommentDeleteErrors] =
 	// 	useState([]);
 	const [backendCommentErrors, setBackendCommentErrors] = useState([]);
-	// const [backendCommentEditErrors, setBackendCommentEditErrors] = useState(
-	// 	[]
-	// );
+	const [backendCommentEditErrors, setBackendCommentEditErrors] = useState(
+		[]
+	);
 	const history = useHistory();
 
 	window.onbeforeunload = function (e) {
@@ -70,11 +70,18 @@ export default function Photo() {
 
 	async function handleEditComment(commentId) {
 		const res = await dispatch(
-			editCommentThunk({ id: commentId, content: editedComment })
+			editCommentThunk({
+				id: commentId,
+				content: editedComment,
+				imageId: photoId,
+				userId: sessionUser.id,
+				username: sessionUser.username,
+			})
 		);
 		if (res) {
-			// setBackendCommentEditErrors(res.errors);
+			setBackendCommentEditErrors(res.errors);
 		} else {
+			setBackendCommentEditErrors([]);
 			setEditId(0);
 		}
 	}
@@ -277,6 +284,17 @@ export default function Photo() {
 												setEditedComment(e.target.value)
 											}
 										/>
+										{backendCommentEditErrors.length ? (
+											<ul className="individual-photo-edit-comment-errors">
+												{backendCommentEditErrors.map(
+													(error) => (
+														<li key={error}>
+															{error}
+														</li>
+													)
+												)}
+											</ul>
+										) : null}
 										<button
 											onClick={() =>
 												handleEditComment(comment.id)
