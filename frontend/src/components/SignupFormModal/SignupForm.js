@@ -38,10 +38,10 @@ export default function SignupFormPage() {
 			if (username.length > 30)
 				errors.push("Username must have at most 30 characters");
 			if (username.includes(" "))
-				errors.push("Username must be one word");
+				errors.push("Username must not contain spaces");
 		}
 		if (email) {
-			if (!email.includes("@"))
+			if (!email.includes("@") || email.includes(" "))
 				errors.push("Email must be a valid email address");
 			if (email.length < 3)
 				errors.push("Email must have at least 3 characters");
@@ -51,6 +51,8 @@ export default function SignupFormPage() {
 		if (password || confirmPassword) {
 			if (password !== confirmPassword)
 				errors.push("Password and confirmed password must match");
+			if (password.length < 6)
+				errors.push("Password must have at least 6 characters");
 		}
 		setValidationErrors(errors);
 	}, [username, email, password, confirmPassword]);

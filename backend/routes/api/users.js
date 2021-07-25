@@ -13,21 +13,29 @@ const validateSignup = [
 		.exists({ checkFalsy: true })
 		.withMessage("Please provide an email address.")
 		.isEmail()
-		.withMessage("Please provide a valid email."),
+		.withMessage("Please provide a valid email.")
+		.isLength({ min: 3 })
+		.withMessage("Please provide an email with at least 3 characaters.")
+		.isLength({ max: 256 })
+		.withMessage("Please provide an email with at most 256 characaters."),
 	check("username")
 		.exists({ checkFalsy: true })
 		.withMessage("Please provide a username.")
 		.isLength({ min: 4 })
-		.withMessage("Please provide a username with at least 4 characters."),
+		.withMessage("Please provide a username with at least 4 characters.")
+		.isLength({ max: 30 })
+		.withMessage("Please provide a username with at most 30 characters.")
+		.custom((value) => !value.includes(" "))
+		.withMessage("Please provide a username with no spaces."),
 	check("username")
 		.not()
 		.isEmail()
-		.withMessage("Username cannot be an email."),
+		.withMessage("Please provide a username that is not an email."),
 	check("password")
 		.exists({ checkFalsy: true })
 		.withMessage("Please provide a password.")
 		.isLength({ min: 6 })
-		.withMessage("Password must be 6 characters or more."),
+		.withMessage("Please provide a password with at least 6 characters."),
 	handleValidationErrors,
 ];
 

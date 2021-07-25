@@ -13,7 +13,9 @@ const validateLogin = [
 		.exists({ checkFalsy: true })
 		.withMessage("Please provide a credential.")
 		.notEmpty()
-		.withMessage("Please provide a valid email or username."),
+		.withMessage("Please provide a valid email or username.")
+		.custom((value) => !value.includes(" "))
+		.withMessage("Please provide a credential without spaces."),
 	check("password")
 		.exists({ checkFalsy: true })
 		.withMessage("Please provide a password."),
