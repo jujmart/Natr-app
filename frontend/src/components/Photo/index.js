@@ -25,6 +25,7 @@ export default function Photo() {
 	const deleteConfirm = useSelector((state) => state.modal.delete);
 	const dispatch = useDispatch();
 	const { photoId } = useParams();
+	const [isLoaded, setIsLoaded] = useState(false);
 	const [currentPhoto, setCurrentPhoto] = useState({});
 	const [newComment, setNewComment] = useState("");
 	const [editId, setEditId] = useState(0);
@@ -110,6 +111,7 @@ export default function Photo() {
 
 	useEffect(() => {
 		dispatch(setPhotosThunk());
+		setIsLoaded(true);
 	}, [dispatch]);
 
 	useEffect(() => {
@@ -129,7 +131,7 @@ export default function Photo() {
 		}
 	}, [dispatch, currentPhoto]);
 
-	if (photos.length && !photos.find((photo) => photo.id === +photoId))
+	if (isLoaded && !photos.find((photo) => photo.id === +photoId))
 		return <Redirect to="/photo-not-found" />;
 
 	return (
