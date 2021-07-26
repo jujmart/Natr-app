@@ -71,57 +71,57 @@ I was particularly pleased with my implementation of the edit comment button whe
 
 ```js
 {
-	+editId !== comment.id ? (
-		<div className="individual-photo-individual-comment-content-and-edit-and-delete-buttons">
-			<div className="individual-photo-individual-comment-content">
-				{comment.content}
-			</div>
-			<div className="individual-photo-individual-comment-edit-and-delete-buttons">
-				{showButtonId === comment.id ? (
-					<>
-						<button
-							className="individual-photo-individual-comment-edit-button"
-							onClick={(e) => {
-								setEditId(e.target.value);
-								setEditedComment(comment.content);
-							}}
-							value={comment.id}
-						>
-							Edit
-						</button>
-						<button
-							className="individual-photo-individual-comment-delete-button"
-							onClick={(e) => handleDeleteComment(e.target.value)}
-							value={comment.id}
-						>
-							Delete
-						</button>
-					</>
-				) : null}
-			</div>
-		</div>
-	) : (
-		<div className="individual-photo-individual-comment-edit-comment-container">
-			<textarea
-				className="individual-photo-individual-comment-edit-comment-content"
-				value={editedComment}
-				onChange={(e) => setEditedComment(e.target.value)}
-			/>
-			{backendCommentEditErrors.length ? (
-				<ul className="individual-photo-edit-comment-errors">
-					{backendCommentEditErrors.map((error) => (
-						<li key={error}>{error}</li>
-					))}
-				</ul>
-			) : null}
-			<button
-				onClick={() => handleEditComment(comment.id)}
-				className="individual-photo-individual-comment-edit-comment-button"
-			>
-				Done
-			</button>
-		</div>
-	);
+    +editId !== comment.id ? (
+        <div className="individual-photo-individual-comment-content-and-edit-and-delete-buttons">
+            <div className="individual-photo-individual-comment-content">
+                {comment.content}
+            </div>
+            <div className="individual-photo-individual-comment-edit-and-delete-buttons">
+                {showButtonId === comment.id ? (
+                    <>
+                        <button
+                            className="individual-photo-individual-comment-edit-button"
+                            onClick={(e) => {
+                                setEditId(e.target.value);
+                                setEditedComment(comment.content);
+                            }}
+                            value={comment.id}
+                        >
+                            Edit
+                        </button>
+                        <button
+                            className="individual-photo-individual-comment-delete-button"
+                            onClick={(e) => handleDeleteComment(e.target.value)}
+                            value={comment.id}
+                        >
+                            Delete
+                        </button>
+                    </>
+                ) : null}
+            </div>
+        </div>
+    ) : (
+        <div className="individual-photo-individual-comment-edit-comment-container">
+            <textarea
+                className="individual-photo-individual-comment-edit-comment-content"
+                value={editedComment}
+                onChange={(e) => setEditedComment(e.target.value)}
+            />
+            {backendCommentEditErrors.length ? (
+                <ul className="individual-photo-edit-comment-errors">
+                    {backendCommentEditErrors.map((error) => (
+                        <li key={error}>{error}</li>
+                    ))}
+                </ul>
+            ) : null}
+            <button
+                onClick={() => handleEditComment(comment.id)}
+                className="individual-photo-individual-comment-edit-comment-button"
+            >
+                Done
+            </button>
+        </div>
+    );
 }
 ```
 
