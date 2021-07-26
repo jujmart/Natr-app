@@ -110,8 +110,7 @@ export default function Photo() {
 	}
 
 	useEffect(() => {
-		dispatch(setPhotosThunk());
-		setIsLoaded(true);
+		dispatch(setPhotosThunk()).then(() => setIsLoaded(true));
 	}, [dispatch]);
 
 	useEffect(() => {
