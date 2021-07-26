@@ -22,22 +22,22 @@ Below is a list of links to information about the site:
 ## Site Feature Screenshots
 
 Homepage:
-![Homepage](./Homepage-Screenshot)
+![Homepage](./Homepage-Screenshot.png?raw=true)
 
 Login Screen Modal:
-![Homepage](./Login-Modal-Screenshot)
+![Homepage](./Login-Modal-Screenshot.png?raw=true)
 
 Signup Screen Modal:
-![Homepage](./Signup-Modal-Screenshot)
+![Homepage](./Signup-Modal-Screenshot.png?raw=true)
 
 Logged Out Individual Photo Page:
-![Homepage](./Photo-Page-Screenshot)
+![Homepage](./Photo-Page-Screenshot.png?raw=true)
 
 Logged In Individual Photo Page:
-![Homepage](./Logged-In-Photo-Page-Screenshot)
+![Homepage](./Logged-In-Photo-Page-Screenshot.png?raw=true)
 
 Edit Image Form:
-![Homepage](./Edit-Image-Screenshot)
+![Homepage](./Edit-Image-Screenshot.png?raw=true)
 
 ## How to build/run the site locally
 
@@ -66,6 +66,64 @@ Edit Image Form:
 2. You should see the homepage appear and be able to use the app
 
 ## Technical Implementation
+
+I was particularly pleased with my implementation of the edit comment button where it replaced the old comment with a textarea containing the old comment text, with onMouseEnter and onMouseLeave functionality on the containing div and a dynamic classname to make the user understand which comment is currently selected. This made the re-render more seamless in the transition between updating the old comment and re-rendering the new comment.
+
+```js
+{
+	+editId !== comment.id ? (
+		<div className="individual-photo-individual-comment-content-and-edit-and-delete-buttons">
+			<div className="individual-photo-individual-comment-content">
+				{comment.content}
+			</div>
+			<div className="individual-photo-individual-comment-edit-and-delete-buttons">
+				{showButtonId === comment.id ? (
+					<>
+						<button
+							className="individual-photo-individual-comment-edit-button"
+							onClick={(e) => {
+								setEditId(e.target.value);
+								setEditedComment(comment.content);
+							}}
+							value={comment.id}
+						>
+							Edit
+						</button>
+						<button
+							className="individual-photo-individual-comment-delete-button"
+							onClick={(e) => handleDeleteComment(e.target.value)}
+							value={comment.id}
+						>
+							Delete
+						</button>
+					</>
+				) : null}
+			</div>
+		</div>
+	) : (
+		<div className="individual-photo-individual-comment-edit-comment-container">
+			<textarea
+				className="individual-photo-individual-comment-edit-comment-content"
+				value={editedComment}
+				onChange={(e) => setEditedComment(e.target.value)}
+			/>
+			{backendCommentEditErrors.length ? (
+				<ul className="individual-photo-edit-comment-errors">
+					{backendCommentEditErrors.map((error) => (
+						<li key={error}>{error}</li>
+					))}
+				</ul>
+			) : null}
+			<button
+				onClick={() => handleEditComment(comment.id)}
+				className="individual-photo-individual-comment-edit-comment-button"
+			>
+				Done
+			</button>
+		</div>
+	);
+}
+```
 
 ## Future Features
 
