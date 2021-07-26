@@ -6,11 +6,38 @@ Natr, a Flickr clone, is an application for nature photo management and sharing.
 
 Below is a list of links to information about the site:
 
--   [Feature List](https://github.com/jujmart/Natr-app/wiki/Feature-List)
+-   [Feature List](../../wiki/Feature-List)
 
--   [Database Schema](https://github.com/jujmart/Natr-app/wiki/Database-Schema)
+-   [Database Schema](../../wiki/Database-Schema)
 
 ## Technologies Used
+
+-   React
+-   Express
+-   Redux
+-   Heroku
+-   Sequelize
+-   PostgreSQL
+
+## Site Feature Screenshots
+
+Homepage:
+![Homepage](./Homepage-Screenshot)
+
+Login Screen Modal:
+![Homepage](./Login-Modal-Screenshot)
+
+Signup Screen Modal:
+![Homepage](./Signup-Modal-Screenshot)
+
+Logged Out Individual Photo Page:
+![Homepage](./Photo-Page-Screenshot)
+
+Logged In Individual Photo Page:
+![Homepage](./Logged-In-Photo-Page-Screenshot)
+
+Edit Image Form:
+![Homepage](./Edit-Image-Screenshot)
 
 ## How to build/run the site locally
 
