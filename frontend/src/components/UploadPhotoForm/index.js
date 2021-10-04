@@ -29,24 +29,24 @@ export default function UploadPhotoFormPage() {
 		}
 	}
 
-	useEffect(() => {
-		let errors = [];
-		if (imageUrl) {
-			const extension3 = imageUrl.slice(imageUrl.length - 4);
-			const extension4 = imageUrl.slice(imageUrl.length - 5);
-			if (
-				extension3 !== ".jpg" &&
-				extension3 !== ".png" &&
-				extension4 !== ".jpeg"
-			) {
-				errors.push(
-					"Image Url must have a file format of .png, .jpg, or .jpeg"
-				);
-			}
-		}
+	// useEffect(() => {
+	// 	let errors = [];
+	// 	if (imageUrl) {
+	// 		const extension3 = imageUrl.slice(imageUrl.length - 4);
+	// 		const extension4 = imageUrl.slice(imageUrl.length - 5);
+	// 		if (
+	// 			extension3 !== ".jpg" &&
+	// 			extension3 !== ".png" &&
+	// 			extension4 !== ".jpeg"
+	// 		) {
+	// 			errors.push(
+	// 				"Image Url must have a file format of .png, .jpg, or .jpeg"
+	// 			);
+	// 		}
+	// 	}
 
-		setValidationErrors(errors);
-	}, [imageUrl]);
+	// 	setValidationErrors(errors);
+	// }, [imageUrl]);
 
 	return (
 		<div className="upload-form-div">

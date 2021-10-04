@@ -10,19 +10,19 @@ const router = express.Router();
 const validateImage = [
 	check("imageUrl")
 		.exists({ checkFalsy: true })
-		.withMessage("Please provide an image url.")
-		.custom((value) => {
-			const extension3 = value.slice(value.length - 4);
-			const extension4 = value.slice(value.length - 5);
-			return (
-				extension3 === ".jpg" ||
-				extension3 === ".png" ||
-				extension4 === ".jpeg"
-			);
-		})
-		.withMessage(
-			"Image Url must have a file format of .png, .jpg, or .jpeg"
-		),
+		.withMessage("Please provide an image url."),
+	// .custom((value) => {
+	// 	const extension3 = value.slice(value.length - 4);
+	// 	const extension4 = value.slice(value.length - 5);
+	// 	return (
+	// 		extension3 === ".jpg" ||
+	// 		extension3 === ".png" ||
+	// 		extension4 === ".jpeg"
+	// 	);
+	// })
+	// .withMessage(
+	// 	"Image Url must have a file format of .png, .jpg, or .jpeg"
+	// ),
 	check("userId")
 		.exists({ checkFalsy: true })
 		.withMessage("Please make sure you are signed in as a valid user."),
